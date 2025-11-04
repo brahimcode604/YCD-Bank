@@ -1,0 +1,61 @@
+*{
+
+
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.main_control{
+display: flex;
+gap: 1%;
+
+
+}
+.main_grid{
+
+
+
+
+    display: grid;
+      gap: 5px;
+
+      grid-template-columns:repeat(14,1fr) ;
+       grid-template-rows:repeat(8,1fr) ;
+
+       width: 100%;
+       height: 100vh;
+
+
+}
+
+.div1_said{
+width: 80px;
+ height: 100vh;
+  background-color: brown;
+ 
+
+}
+
+.div2_carte{
+
+grid-row:1/4 ;
+grid-column:1/6 ;
+  background-color: rgb(69, 42, 165);
+
+}
+
+.div3_PUB{
+
+grid-row:1/4 ;
+grid-column:6/15 ;
+  background-color: rgb(69, 42, 165);
+
+}
+
+
+
+
+
+
+
