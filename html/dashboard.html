@@ -4,82 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-</head>
-<body>
     <script src="https://cdn.tailwindcss.com"></script>
-
+</head>
+<body class="bg-blue-50">
+    
+    
     <main>
-        <section class="ml-32 mr-32 mt-10">
-            <div class="flex flex-wrap gap-6">
-                <div class="flex-1 min-w-[300px] bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-slate-600 shadow-lg hover:-translate-y-1 hover:shadow-2xl transition">
-                    <div class="flex justify-between items-center mb-5">
-                        <h2 class="text-[2rem] font-semibold text-white">SAVINGS ACCOUNT</h2>
-                        <span class="bg-emerald-500 text-white px-3 py-1 text-[130%] rounded-full font-semibold">Active</span>
+        <section class="">
+            <div class="h-11"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-5 ml-20 mr-20 gap-6">
+            <div class="lg:col-span-5 space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="rounded-xl bg-gradient-to-r from-slate-800 to-slate-700 text-white p-6 shadow-soft relative overflow-hidden">
+                    <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-xs uppercase opacity-80">Savings Account</p>
+                        <div class="mt-2 text-3xl font-bold">0.00DH</div>
+                        <p class="text-xs mt-1 opacity-70">Account: **** 4582</p>
                     </div>
-                        <div class="text-[130%] font-bold text-slate-50 mb-2">0.00 DH</div>
-                            <p class="text-slate-300 text-[130%] mb-6">Account: 0000 0000</p>
-                                <div class="bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg px-4 py-2 text-[140%] font-medium inline-block mb-6">
-                                    Interest Rate: 2.5% APY
-                                </div>
-
-                                <div class="flex justify-between border-t border-slate-600 pt-5 mt-5 text-center">
-                                    <div>
-                                        <p class="text-[130%] text-slate-400 mb-1">Monthly Growth</p>
-                                        <p class="text-[130%] font-semibold text-white">+0 DH</p>
-                                    </div>
-                                <div>
-                                    <p class="text-[130%] text-slate-400 mb-1">This Year</p>
-                                    <p class="text-[130%] font-semibold text-white">+0 DH</p>
-                                </div>
-                                <div>
-                                    <p class="text-[130%] text-slate-400 mb-1">Last Deposit</p>
-                                    <p class="text-[130%] font-semibold text-white">+0.00 DH</p>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="flex-1 min-w-[300px] bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-6 border border-slate-600 shadow-lg hover:-translate-y-1 hover:shadow-2xl transition">
-                    <div class="flex justify-between items-center mb-5">
-                        <h2 class="text-[2rem] font-semibold text-white">NORMAL ACCOUNT</h2>
-                        <span class="bg-emerald-500 text-white px-3 py-1 text-[130%] rounded-full font-semibold">Active</span>
+                    <span class="inline-block px-3 py-1 bg-emerald-500/90 text-xs rounded-full">Active</span>
                     </div>
 
-                    <div class="text-[130%] font-bold text-slate-50 mb-2">0.00 DH</div>
-                        <p class="text-slate-400 text-[130%] mb-6">Account: 0000 0000</p>
-                            <div class="bg-gradient-to-r from-emerald-500 to-emerald-700 rounded-lg px-4 py-2 text-[140%] font-medium inline-block mb-6">
-                                Overdraft Protection: Enabled
-                            </div>
-                            <div class="flex justify-between border-t border-slate-600 pt-5 mt-5 text-center">
-                            <div>
-                                <p class="text-[130%] text-slate-400 mb-1">Monthly Fees</p>
-                                <p class="text-[130%] font-semibold text-white">0.00 dh</p>
-                            </div>
-                            <div>
-                                <p class="text-[130%] text-slate-400 mb-1">Transactions</p>
-                                <p class="text-[130%] font-semibold text-white">0 DH</p>
-                            </div>
-                            <div>
-                                <p class="text-[130%] text-slate-400 mb-1">Last Withdrawal</p>
-                                <p class="text-[130%] font-semibold text-white">0.00 DH</p>
-                            </div>
+                    <div class="mt-5">
+                    <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500" style="width:72%"></div>
                     </div>
+                    <div class="mt-4 text-xs flex justify-between opacity-80">
+                        <span>Monthly Growth +0DH</span>
+                        <span>Last Deposit 0</span>
+                    </div>
+                    </div>
+                    <div class="accent-circle bg-indigo-500 right-6 -top-10"></div>
                 </div>
-            </div>
+                <div class="rounded-xl bg-gradient-to-r from-slate-800 to-slate-700 text-white p-6 shadow-soft relative overflow-hidden">
+                    <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-xs uppercase opacity-80">Normal Account</p>
+                        <div class="mt-2 text-3xl font-bold">0DH</div>
+                        <p class="text-xs mt-1 opacity-70">Account: **** 7391</p>
+                    </div>
+                    <span class="inline-block px-3 py-1 bg-emerald-500/90 text-xs rounded-full">Active</span>
+                    </div>
+                    <div class="mt-5">
+                    <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-3 rounded-full bg-gradient-to-r from-green-500 to-emerald-500" style="width:45%"></div>
+                    </div>
+                    <div class="mt-4 text-xs flex justify-between opacity-80">
+                        <span>Monthly Fees 0DH</span>
+                        <span>Transactions 0</span>
+                    </div>
+                    </div>
+                    <div class="accent-circle bg-emerald-400 left-4 -bottom-10"></div>
+                </div>
+                </div>
         </section>
-        <section class="flex w-[100%] m-20">
-            <div class="bg-red-400 w-[40%]">
+        <div class="h-11"></div>
+        <section class="flex flex-col items-center ml-10 mr-10 justify-center lg:flex lg:flex-row">
+            <div class="bg-red-100 w-[30%] h-60 shadow">
                 2
             </div>
-            <div class="bg-blue-400 w-[50%]">
+            <div class="h-4 w-4"></div>
+            <div class="flex gap-5 bg-blue-100 w-[65%] h-60 shadow">
+                <div>
+                    <h1 class="text-xl lg:text-3xl">Cashback up to 60%</h1>
+                    <p>
+                        Redesign concept for online bank mBank. This is online service that allows 
+                        you to pay bills for a variety of goods and services using your personal device.
+                    </p>
+                    <div class="bg-blue-500"> Active </div>
+                </div>
+                <img class="w-full h-full" src="../imge/Cashback.png" alt="">
+            </div>
+        </section>
+        <div class="h-11"></div>
+        <section class="ml-14 mr-10 gap-32 lg:flex">
+            <div class="flex flex-col gap-5 bg-white w-[31%] rounded-[20px] shadow">
+                <div class="flex justify-around gap-32 mt-5 w-[100%]">
+                    <h1 class="text-[150%]">Transaction</h1>
+                    <img src="../imge/Filter.png" alt="">
+                </div>
+                <div class="flex justify-around gap-2">
+                    <div class="w-10 h-10 bg-gray-100 rounded-full">
+                        <img class="w-16" src="../imge/arrowred.png" alt="red-arraw">
+                    </div>
+                    <div>
+                        <p class="text-[1rem]">Starbucks New York LLP <br> <span>12.01.2020 09:34</span> </p>
+                    </div>
+                    <h2 class="text-red-400"> -5.50DH</h2>
+                </div>
+                <div class="flex justify-around gap-2">
+                    <div class="w-10 h-10 bg-gray-100 rounded-full">
+                        <img class="w-16" src="../imge/arrowred.png" alt="red-arraw">
+                    </div>
+                    <div>
+                        <p class="text-[1rem]">Starbucks New York LLP <br> <span>12.01.2020 09:34</span> </p>
+                    </div>
+                    <h2 class="text-red-400"> -5.50DH</h2>
+                </div>
+                <div class="flex justify-around gap-2">
+                    <div class="w-10 h-10 bg-gray-100 rounded-full">
+                        <img class="w-16" src="../imge/arrowgreen.png" alt="red-arraw">
+                    </div>
+                    <div>
+                        <p class="text-[1rem]">Starbucks New York LLP <br> <span>12.01.2020 09:34</span> </p>
+                    </div>
+                    <h2 class="text-red-400"> -5.50DH</h2>
+                </div>
+                <div class="h-1"></div>
+            </div>
+            <div class="mt-10 mb-10 bg-red-100 w-[40%] shadow rounded-xl">
                 2
             </div>
         </section>
-        
-        
     </main>
-
-
-
 
     <script src="../script/dashboard.js"></script>
 </body>
