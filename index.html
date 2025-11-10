@@ -15,7 +15,7 @@
  
  <header class="flex items-center justify-between p-4 bg-white ">
     <!-- Logo -->
-    <div class="flex items-center space-x-3">
+    <div class="flex    items-center space-x-3">
         <!-- Logo mobile -->
         <img src="imge/ChatGPT_Image_Nov_4__2025__08_25_46_PM-removebg-preview(1) 2.png" 
              alt="Logo" 
@@ -85,7 +85,7 @@
  <!-- Barre latérale verticale pour mobile -->
 <section class="[@media_(min-width:600px)]:hidden 
                 fixed left-0 top-12 h-full w-16    z-50
-                flex flex-col justify-between py-12">
+                flex flex-col justify-between py-12"   id="barre_verticale">
 
     <!-- Section supérieure - Navigation principale -->
     <div class="flex flex-col items-center gap-8">
@@ -138,7 +138,153 @@
     type="button" 
     value="Open Account" 
     class="bg-red-500 text-white px-3 py-1 rounded-full     transition"
+
+    id="create_compte"
+
   />
+
+
+
+
+
+
+  <!-- POPUP -->
+  <div id="popup" class="hidden fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl relative">
+
+      <!-- En-tête -->
+      <div class="bg-gray-50 py-2 rounded-t-xl border-b text-center">
+        <h2 class="text-lg font-semibold">Création de Compte Bancaire</h2>
+      </div>
+
+      <!-- Étapes -->
+      <div class="flex justify-center space-x-6 py-3">
+        <div class="flex flex-col items-center">
+          <div id="step1" class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center">1</div>
+          <span class="text-xs text-blue-600 mt-1 font-medium">Informations</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div id="step2" class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center">2</div>
+          <span class="text-xs text-gray-600 mt-1">Coordonnées</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div id="step3" class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center">3</div>
+          <span class="text-xs text-gray-600 mt-1">Type de Compte</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div id="step4" class="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center">4</div>
+          <span class="text-xs text-gray-600 mt-1">Validation</span>
+        </div>
+      </div>
+
+      <!-- Contenu dynamique -->
+      <div class="p-3 space-y-4 overflow-y-auto max-h-[70vh]">
+        <!-- Étape 1 -->
+        <div class="step" id="content1">
+         <!-- Contenu -->
+      <div class="p-3 space-y-4   max-h-[70vh]">
+
+        <!-- Informations Personnelles -->
+        <h3 class="font-semibold text-gray-800 flex items-center gap-1">
+          <i class="fa-regular fa-id-card"></i> Informations Personnelles
+        </h3>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-sm font-medium">Numéro CIN *</label>
+            <input type="text" placeholder="Ex: AB123456" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            <small class="text-gray-400">Votre carte d'identité nationale</small>
+          </div>
+          <div>
+            <label class="text-sm font-medium">Date délivrance CIN *</label>
+            <input type="date" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+
+          <div>
+            <label class="text-sm font-medium">Nom *</label>
+            <input type="text" placeholder="Votre nom" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+          <div>
+            <label class="text-sm font-medium">Prénom *</label>
+            <input type="text" placeholder="Votre prénom" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+
+          <div>
+            <label class="text-sm font-medium">Date de naissance *</label>
+            <input type="date" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+          <div>
+            <label class="text-sm font-medium">Lieu de naissance *</label>
+            <input type="text" placeholder="Ville de naissance" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+
+          <div>
+            <label class="text-sm font-medium">Nationalité *</label>
+            <select class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+              <option>-- Sélectionnez votre nationalité --</option>
+              <option>Marocaine</option>
+              <option>Française</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-sm font-medium">Civilité *</label>
+            <select class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+              <option>-- Sélectionnez --</option>
+              <option>M.</option>
+              <option>Mme</option>
+              <option>Mlle</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="step hidden" id="content2">
+          <h3 class="font-semibold text-gray-800 mb-2">Coordonnées</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm font-medium">Téléphone *</label>
+              <input type="text" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+212 6 00 00 00 00">
+            </div>
+            <div>
+              <label class="text-sm font-medium">Adresse *</label>
+              <input type="text" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Ville, rue, code postal">
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="step hidden" id="content3">
+          <h3 class="font-semibold text-gray-800 mb-2">Type de Compte</h3>
+          <select class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            <option>-- Sélectionnez --</option>
+            <option>Compte Courant</option>
+            <option>Compte Épargne</option>
+            <option>Compte Professionnel</option>
+          </select>
+        </div>
+
+        <!-- Étape 4 -->
+        <div class="step hidden text-center" id="content4">
+          <h3 class="font-semibold text-gray-800 mb-2">Validation</h3>
+          <p class="text-gray-600">Veuillez vérifier vos informations avant de valider votre demande d’ouverture de compte.</p>
+          <button class="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Valider</button>
+        </div>
+      </div>
+
+      <!-- Pied de popup -->
+      <div class="flex justify-between items-center px-6 py-4 border-t bg-gray-50 rounded-b-xl">
+        <button id="close_popup" class="text-gray-600 hover:text-gray-800">Fermer</button>
+        <div class="space-x-2">
+          <button id="prev_step" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 hidden">← Précédent</button>
+          <button id="next_step" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Suivant →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
 </article>
@@ -168,9 +314,9 @@
 
 
 <div class=" flex justify-around"> 
- <img src="imge/img__/download 1.png" alt="">
- <img src="imge/img__/Social media design 1.png" alt="">
- <img src="imge/img__/undefined (1) 1.png" alt="">
+ <img src="imge/img__/download 1.png" alt="" class="  ">
+ <img src="imge/img__/Social media design 1.png" alt="" class="">
+ <img src="imge/img__/undefined (1) 1.png" alt="" class="">
  </div>
 
 </section>
@@ -360,6 +506,13 @@
             </div>
         </div>
     </footer>
+
+
+    
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+     <script src="script/script.js"></script>
+
 
 </body>
 </html>
