@@ -6,41 +6,360 @@
     <title>Document</title>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
      <script src="https://cdn.tailwindcss.com"></script>
-      <link rel="stylesheet" href="style/style.css">     
-
+     
+      <link rel="stylesheet" href="style/style.css">   
+      
 </head>
-<body  class="">
+<body >
 
-    <header class="bg-white border-b border-gray-200 p-4 md:p-6 flex flex-col md:flex-row justify-between items-center">
-  <h1 class="text-xl font-bold text-blue-700 mb-2 md:mb-0">YCD Bank</h1>
-  <nav class="flex flex-wrap gap-4 text-gray-700">
-    <a href="#" class="hover:text-blue-600">Accueil</a>
-    <a href="#" class="hover:text-blue-600">Comptes</a>
-    <a href="#" class="hover:text-blue-600">Historique</a>
-    <a href="#" class="hover:text-blue-600">Profil</a>
-  </nav>
+ 
+ <header class="flex items-center justify-between p-4 bg-white ">
+    <!-- Logo -->
+    <div class="flex items-center space-x-3">
+        <!-- Logo mobile -->
+        <img src="imge/ChatGPT_Image_Nov_4__2025__08_25_46_PM-removebg-preview(1) 2.png" 
+             alt="Logo" 
+             class="w-11 h-12 [@media_(min-width:600px)]:hidden">
+
+        <!-- Logo desktop -->
+        <div class=" [@media_(max-width:600px)]:hidden  flex flex-col ">
+            <img src="imge/img__/ChatGPT_Image_Nov_4__2025__08_25_46_PM-removebg-preview(1) 1.png" 
+                 alt="Logo" 
+                 class=" w-1/2 ">
+            <p class="text-gray-700  absolute top-[47px] left-[80px]  ">WELCOME BACK, OLEG!</p>
+        </div>
+    </div>
+
+
+
+    <div  class="flex items-center   justify-around w-1/2 "> 
+    <!-- Navigation -->
+    <nav class="hidden md:flex items-center gap-6">
+        <a href="index.html" 
+           class="text-gray-700 hover:text-blue-500 transition-colors duration-200 font-medium">
+            Home
+        </a>
+        <a href="html/dashboard.html" 
+           class="text-gray-700 hover:text-blue-500 transition-colors duration-200 font-medium">
+            Dashboard
+        </a>
+    </nav>
+
+
+    <!-- Barre de recherche -->
+    <div class="flex items-center w-48 md:w-64 bg-gray-50 border border-gray-300 rounded-2xl px-3 py-2 shadow-sm hover:shadow-md transition-shadow">
+        <input 
+            type="text" 
+            placeholder="Search..." 
+            class="flex-grow bg-transparent outline-none text-gray-700 placeholder-gray-400 text-sm md:text-base"
+            aria-label="Search"
+        />
+        <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke-width="1.5" 
+            stroke="currentColor" 
+            class="w-5 h-5 text-gray-400 flex-shrink-0"
+        >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" />
+        </svg>
+    </div>
+
+    <!-- Avatar utilisateur -->
+    <div class="flex-shrink-0">
+        <img src="imge/img& bg.png" 
+             alt="Profile picture of Oleg" 
+             class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-gray-200 object-cover hover:border-blue-400 transition-colors cursor-pointer">
+    </div>
+    </div>
 </header>
 
-<main class="main_control"> 
-<div class="div1_said"></div>
 
 
-<section   class="main_grid">
+<main>
 
-<div class="div2_carte"></div>
+   
 
-<div class="div3_PUB"></div>
+
+ <!-- Barre latérale verticale pour mobile -->
+<section class="[@media_(min-width:600px)]:hidden 
+                fixed left-0 top-12 h-full w-16    z-50
+                flex flex-col justify-between py-12">
+
+    <!-- Section supérieure - Navigation principale -->
+    <div class="flex flex-col items-center gap-8">
+        <a href="index.html" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+            <img src="imge/icon/Home.png" alt="Home" class="w-6 h-6">
+
+        </a>
+        <a href="dash" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+            <img src="imge/icon/dash_bord.png" alt="Dashboard" class="w-6 h-6">
+        </a>
+    </div>
+
+    <!-- Section inférieure - Actions -->
+    <div class="flex flex-col items-center gap-8">
+        <a href="seteng" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+            <img src="imge/icon/setteing.png" alt="Settings" class="w-6 h-6">
+        </a>
+        <a href="logout" class="p-2 rounded-lg hover:bg-red-50 transition-colors">
+            <img src="imge/icon/log out.png" alt="Logout" class="w-6 h-6">
+        </a>
+    </div>
 
 </section>
 
-   
+
+
+
+
+
+  <section class="[@media_(max-width:600px)]:bg-[url('imge/bg.png')]  [@media_(min-width:600px)]:bg-[url('imge/BG8ORDINATURE.png')]   ml-16  bg-center     flex items-end justify-center">
+
+    <article class="  w-[250px] h-[300px] bg-[#fef7f7] rounded-2xl shadow-md flex flex-col items-center justify-center text-center p-4">
+  <p class="text-sm text-gray-600 font-semibold mb-2">PERSONAL BANKING</p>
+
+  <p class="text-lg font-bold text-gray-800 mb-2">
+    Ready to Watch Your <br> Money Grow ?
+  </p>
+
+
+  
+  <p class="text-xs text-gray-500 mb-5">
+    We will help you organize your money <br>
+    smartly and get a free saving <br>
+    account.
+  </p>
+
+  
+  
+  <input 
+    type="button" 
+    value="Open Account" 
+    class="bg-red-500 text-white px-3 py-1 rounded-full     transition"
+  />
+
+
+</article>
+
+
+
+
+
+
+
+
+
+     
+
+
+  </section>
+
+
+
+<section  class="  ml-20    mt-10 "> 
+  
+  <div  class="flex  justify-center  items-center  h-24 ">
+
+    <h1  class="text-[#643074] font-bold  text-[4vw] ">Servises</h1>
+  </div>
+
+
+
+<div class=" flex justify-around"> 
+ <img src="imge/img__/download 1.png" alt="">
+ <img src="imge/img__/Social media design 1.png" alt="">
+ <img src="imge/img__/undefined (1) 1.png" alt="">
+ </div>
+
+</section>
+
+
+
+<section class="ml-16 md:ml-0 px-4 py-12">
+    <!-- Titre principal -->
+    <h1 class="text-[#643074] font-bold text-[4vw]   text-center  ">
+        Plan, Track all Your Transactions in one <br> Place
+    </h1>
+
+    <!-- Contenu principal - Layout responsive -->
+    <div class="flex  flex-row items-center gap-4 max-w-6xl mx-auto">
+        
+        <!-- Image du téléphone -->
+        <div class=" flex justify-center">
+            <img src="imge/phone 1.png" alt="Mobile Banking App" class="w-60   lg:w-70">
+        </div>
+
+        <!-- Features et description -->
+        <article class="flex-1">
+            <!-- Sous-titre -->
+            <h2 class="  text-[2.5vw] font-bold text-gray-800 m-2 ">
+                Tap into The Collective Power of Your Finances
+            </h2>
+            
+            <!-- Liste des features -->
+            <div class="space-y-6 mb-8">
+                <!-- Feature 1 -->
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <img src="imge/icon plan/banque 1.png" alt="Cash Flow" class="w-6 h-6">
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-1">Real-time Cash Flow</h3>
+                        <p class="text-gray-600 text-[1.4vw]">Easily view your cash flow and track bills & subscriptions to budget better.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <img src="imge/icon plan/banki-removebg-preview 1.png" alt="Banking" class="w-6 h-6">
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-1">Smart Banking</h3>
+                        <p class="text-gray-600 text-[1.4vw]">Easily view your cash flow and track bills & subscriptions to budget better.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="flex items-start gap-2">
+                    <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <img src="imge/icon plan/en-especes 1.png" alt="Cash Management" class="w-6 h-6">
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-1">Cash Management</h3>
+                        <p class="text-gray-600 text-[1.4vw]">Easily view your cash flow and track bills & subscriptions to budget better.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <img src="imge/icon plan/Screenshot 2025-11-04 163850 1.png" alt="Security" class="w-6 h-6">
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-1">Secure Transactions</h3>
+                        <p class="text-gray-600 text-[1.4vw]">Easily view your cash flow and track bills & subscriptions to budget better.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bouton CTA -->
+            <button class=" text-black px-4 py-3 rounded-full hover:bg-red-600 transition-colors duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform">
+                Download the App
+            </button>
+        </article>
+    </div>
+
+    <!-- Séparateur -->
+    <hr class="my-16 border-gray-300 max-w-4xl mx-auto">
+
+    <!-- Grid des services bancaires -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        
+        <!-- Branches & ATMs -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-200 hover:shadow-lg transition-shadow group">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 text-lg">Branches & ATMs Locations</h3>
+            </div>
+        </div>
+        
+        <!-- Online Banking -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-200 hover:shadow-lg transition-shadow group">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                    <i class="fas fa-laptop text-green-600"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 text-lg">Online Banking</h3>
+            </div>
+        </div>
+        
+        <!-- Appointment -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-200 hover:shadow-lg transition-shadow group">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+                    <i class="fas fa-calendar-check text-purple-600"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 text-lg">Appointment</h3>
+            </div>
+        </div>
+        
+        <!-- 24-hours Banking -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-200 hover:shadow-lg transition-shadow group">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                    <i class="fas fa-clock text-orange-600"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 text-lg">24-hours Banking</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+ <!-- About Section -->
+    <section class="bg-[#643074] text-white mt-16 py-12 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">About YCD Bank</h2>
+            <p class="text-lg leading-relaxed mb-8">
+                As YCD Bank, we are dedicated to helping individuals, families, and businesses achieve their financial goals. 
+                We offer secure and innovative banking solutions – from savings and loans to digital services – to build trust, 
+                entrepreneurship, and customer care. Our mission is simple: to make banking easier and to build lasting 
+                relationships with every client we serve.
+            </p>
+        </div>
+    </section>
+
+
+
+
+
+  
 </main>
 
 
 
+ <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+                <div>
+                    <h4 class="font-bold mb-4">OUR AGENTS</h4>
+                    <p>MANNER STORIES</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">PARTNERSHIP</h4>
+                    <p>TERMS OF USE</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">VOICE</h4>
+                    <p>PRIVACY</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">FREE TIME</h4>
+                    <p>SITEMAP</p>
+                </div>
+            </div>
+            <div class="text-center mt-8 pt-8 border-t border-gray-700">
+                <p>&copy; 2024 YCD Bank. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-
-
-    
 </body>
 </html>
