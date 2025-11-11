@@ -32,30 +32,7 @@ if(count < 5 ){
     
 })
 
-// for Cards
-/*
-const card1 = document.getElementById('card1');
-const card2 = document.getElementById('card2');
-const card3 = document.getElementById('card3');
-const card4 = document.getElementById('card4');
+// for Accounts text
 
-const btn1 = document.getElementById('btn1');
-const btn2 = document.getElementById('btn2');
-const btn3 = document.getElementById('btn3');
-
-function showCard(cardToShow, cardToHide) {
-
-  cardToHide.classList.remove('show');
-  setTimeout(() => {
-    cardToHide.classList.add('hidden');
-  }, 500);
-
-  cardToShow.classList.remove('hidden');
-  setTimeout(() => {
-    cardToShow.classList.add('show');
-  }, 50);
-}
-
-btn1.addEventListener('click', () => showCard(card2, card1));
-btn2.addEventListener('click', () => showCard(card1, card2));
-*/
+const h1 = document.getElementById('passwtext');
+h1.textContent = '*'.repeat(h1.textContent.length);

@@ -28,8 +28,8 @@ convertbtn.addEventListener('mouseout', () => {
 convertbtn.addEventListener('click', async () => {
     const base = document.getElementById('inputcurrnsi1').value;
     const target = document.getElementById('inputcurrnsi2').value;
-    const amountInput = document.querySelector('input[type="number"]'); // the left input field
-    const resultDisplay = document.querySelector('h1'); // the right output field
+    const amountInput = document.querySelector('input[type="number"]');
+    const resultDisplay = document.getElementById('convrs');
     
     const amount = parseFloat(amountInput.value);
     
