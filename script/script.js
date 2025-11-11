@@ -1,5 +1,5 @@
 
-localStorage.clear();
+
 // --- Gestion Popup ---
 const Barre_virticale = document.getElementById("barre_verticale");
 const popup = document.getElementById("popup");
