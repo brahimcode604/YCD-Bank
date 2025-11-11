@@ -1,1 +1,527 @@
- 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parenthèse Réflexive - Évaluation du Jour</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.5s ease;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto px-4">
+        <!-- En-tête -->
+        <div class="text-center mb-8 fade-in">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+                <i class="fas fa-brain mr-3 text-indigo-600"></i>
+                Parenthèse Réflexive
+            </h1>
+            <p class="text-lg text-gray-600">Évaluation des objectifs du jour - Moment d'auto-évaluation et d'amélioration continue</p>
+            <div class="w-24 h-1 bg-indigo-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- Carte principale -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden fade-in">
+            <!-- En-tête de la carte -->
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2">Bilan de la Journée</h2>
+                        <p class="opacity-90">Prenez un moment pour réfléchir à votre progression</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex items-center">
+                        <div class="relative w-16 h-16">
+                            <svg class="w-16 h-16" viewBox="0 0 36 36">
+                                <path class="text-indigo-300" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" 
+                                    fill="none" stroke="currentColor" stroke-width="3"/>
+                                <path class="progress-ring__circle text-white" 
+                                    stroke-dasharray="100, 100" 
+                                    d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" 
+                                    fill="none" stroke="currentColor" stroke-width="3"/>
+                                <text x="18" y="20.5" class="text-sm font-bold" text-anchor="middle" fill="white">0%</text>
+                            </svg>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm opacity-90">Progression du bilan</p>
+                            <p class="text-xl font-bold" id="completion-text">0% complété</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenu du formulaire -->
+            <div class="p-6">
+                <form id="reflectionForm">
+                    <!-- Section 1: Objectifs du jour -->
+                    <div class="mb-8 fade-in" id="section-objectives">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-indigo-600 font-bold">1</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">Objectifs du Jour</h3>
+                        </div>
+                        
+                        <div class="ml-11 space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Quels objectifs aviez-vous fixés pour aujourd'hui ?
+                                </label>
+                                <textarea 
+                                    id="objectives" 
+                                    rows="3" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                                    placeholder="Décrivez les objectifs que vous vous étiez fixés en début de journée..."
+                                ></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Niveau d'atteinte des objectifs
+                                </label>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="achievement-card" data-value="atteint">
+                                        <div class="p-4 border-2 border-gray-200 rounded-xl text-center cursor-pointer transition hover:border-green-500 hover:bg-green-50">
+                                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                                <i class="fas fa-check text-green-600"></i>
+                                            </div>
+                                            <span class="font-medium text-gray-800">Atteint</span>
+                                        </div>
+                                    </div>
+                                    <div class="achievement-card" data-value="partiellement">
+                                        <div class="p-4 border-2 border-gray-200 rounded-xl text-center cursor-pointer transition hover:border-yellow-500 hover:bg-yellow-50">
+                                            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                                <i class="fas fa-minus text-yellow-600"></i>
+                                            </div>
+                                            <span class="font-medium text-gray-800">Partiellement</span>
+                                        </div>
+                                    </div>
+                                    <div class="achievement-card" data-value="non-atteint">
+                                        <div class="p-4 border-2 border-gray-200 rounded-xl text-center cursor-pointer transition hover:border-red-500 hover:bg-red-50">
+                                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                                <i class="fas fa-times text-red-600"></i>
+                                            </div>
+                                            <span class="font-medium text-gray-800">Non Atteint</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="achievement-level">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Analyse -->
+                    <div class="mb-8 fade-in" id="section-analysis">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-indigo-600 font-bold">2</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">Analyse de la Journée</h3>
+                        </div>
+                        
+                        <div class="ml-11 space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Facteurs de réussite <i class="fas fa-check text-green-500 ml-1"></i>
+                                    </label>
+                                    <textarea 
+                                        id="success-factors" 
+                                        rows="4" 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                                        placeholder="Qu'est-ce qui a bien fonctionné ? Quelles stratégies ont été efficaces ?..."
+                                    ></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Obstacles rencontrés <i class="fas fa-exclamation-triangle text-yellow-500 ml-1"></i>
+                                    </label>
+                                    <textarea 
+                                        id="obstacles" 
+                                        rows="4" 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition"
+                                        placeholder="Quels défis avez-vous rencontrés ? Qu'est-ce qui a été difficile ?..."
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Ajustements -->
+                    <div class="mb-8 fade-in" id="section-adjustments">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-indigo-600 font-bold">3</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">Ajustements pour Demain</h3>
+                        </div>
+                        
+                        <div class="ml-11">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Que pourriez-vous ajuster pour améliorer votre efficacité demain ?
+                                </label>
+                                <textarea 
+                                    id="adjustments" 
+                                    rows="3" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                                    placeholder="Décrivez les changements que vous envisagez pour la prochaine journée..."
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Ressenti -->
+                    <div class="mb-8 fade-in" id="section-feelings">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-indigo-600 font-bold">4</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">Ressenti Global</h3>
+                        </div>
+                        
+                        <div class="ml-11">
+                            <div class="mb-6">
+                                <label class="block text-sm font-medium text-gray-700 mb-4">
+                                    Comment évaluez-vous votre dynamique de travail aujourd'hui ?
+                                </label>
+                                <div class="flex flex-wrap gap-3">
+                                    <div class="feeling-card" data-value="1">
+                                        <div class="w-16 h-16 bg-red-100 rounded-xl flex flex-col items-center justify-center cursor-pointer transition hover:bg-red-200">
+                                            <i class="fas fa-tired text-red-600 text-xl mb-1"></i>
+                                            <span class="text-xs font-medium text-red-800">Difficile</span>
+                                        </div>
+                                    </div>
+                                    <div class="feeling-card" data-value="2">
+                                        <div class="w-16 h-16 bg-orange-100 rounded-xl flex flex-col items-center justify-center cursor-pointer transition hover:bg-orange-200">
+                                            <i class="fas fa-frown text-orange-600 text-xl mb-1"></i>
+                                            <span class="text-xs font-medium text-orange-800">Moyen</span>
+                                        </div>
+                                    </div>
+                                    <div class="feeling-card" data-value="3">
+                                        <div class="w-16 h-16 bg-yellow-100 rounded-xl flex flex-col items-center justify-center cursor-pointer transition hover:bg-yellow-200">
+                                            <i class="fas fa-meh text-yellow-600 text-xl mb-1"></i>
+                                            <span class="text-xs font-medium text-yellow-800">Correct</span>
+                                        </div>
+                                    </div>
+                                    <div class="feeling-card" data-value="4">
+                                        <div class="w-16 h-16 bg-blue-100 rounded-xl flex flex-col items-center justify-center cursor-pointer transition hover:bg-blue-200">
+                                            <i class="fas fa-smile text-blue-600 text-xl mb-1"></i>
+                                            <span class="text-xs font-medium text-blue-800">Bon</span>
+                                        </div>
+                                    </div>
+                                    <div class="feeling-card" data-value="5">
+                                        <div class="w-16 h-16 bg-green-100 rounded-xl flex flex-col items-center justify-center cursor-pointer transition hover:bg-green-200">
+                                            <i class="fas fa-laugh text-green-600 text-xl mb-1"></i>
+                                            <span class="text-xs font-medium text-green-800">Excellent</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="feeling-level">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Commentaire libre (facultatif)
+                                </label>
+                                <textarea 
+                                    id="comments" 
+                                    rows="2" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                                    placeholder="Partagez toute autre réflexion, idée ou sentiment sur votre journée..."
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Boutons d'action -->
+                    <div class="flex flex-col sm:flex-row justify-between items-center pt-6 border-t border-gray-200">
+                        <div class="mb-4 sm:mb-0">
+                            <button type="button" id="saveDraft" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                <i class="far fa-save mr-2"></i>
+                                Sauvegarder le brouillon
+                            </button>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button type="button" id="resetForm" class="px-5 py-2 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition">
+                                <i class="fas fa-redo mr-2"></i>
+                                Recommencer
+                            </button>
+                            <button type="submit" id="submitForm" class="px-5 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition flex items-center">
+                                <i class="far fa-paper-plane mr-2"></i>
+                                Soumettre le bilan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de confirmation -->
+        <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center fade-in">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Bilan Sauvegardé !</h3>
+                <p class="text-gray-600 mb-6">Votre réflexion de fin de journée a été enregistrée avec succès.</p>
+                <button id="closeModal" class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Éléments du DOM
+            const form = document.getElementById('reflectionForm');
+            const achievementCards = document.querySelectorAll('.achievement-card');
+            const feelingCards = document.querySelectorAll('.feeling-card');
+            const achievementInput = document.getElementById('achievement-level');
+            const feelingInput = document.getElementById('feeling-level');
+            const progressCircle = document.querySelector('.progress-ring__circle');
+            const progressText = document.querySelector('.progress-ring__circle + text');
+            const completionText = document.getElementById('completion-text');
+            const saveDraftBtn = document.getElementById('saveDraft');
+            const resetBtn = document.getElementById('resetForm');
+            const submitBtn = document.getElementById('submitForm');
+            const successModal = document.getElementById('successModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            
+            // Champs du formulaire
+            const formFields = [
+                'objectives', 'success-factors', 'obstacles', 'adjustments', 'comments'
+            ];
+            
+            // Configuration du cercle de progression
+            const radius = progressCircle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+            progressCircle.style.strokeDashoffset = circumference;
+            
+            // Suivi de la progression
+            let completion = 0;
+            
+            // Sélection du niveau d'atteinte
+            achievementCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    achievementCards.forEach(c => {
+                        c.querySelector('div').classList.remove('border-green-500', 'bg-green-50', 'border-yellow-500', 'bg-yellow-50', 'border-red-500', 'bg-red-50');
+                    });
+                    
+                    const value = this.getAttribute('data-value');
+                    achievementInput.value = value;
+                    
+                    if (value === 'atteint') {
+                        this.querySelector('div').classList.add('border-green-500', 'bg-green-50');
+                    } else if (value === 'partiellement') {
+                        this.querySelector('div').classList.add('border-yellow-500', 'bg-yellow-50');
+                    } else {
+                        this.querySelector('div').classList.add('border-red-500', 'bg-red-50');
+                    }
+                    
+                    updateProgress();
+                });
+            });
+            
+            // Sélection du ressenti
+            feelingCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    feelingCards.forEach(c => {
+                        c.querySelector('div').classList.remove('bg-red-200', 'bg-orange-200', 'bg-yellow-200', 'bg-blue-200', 'bg-green-200');
+                    });
+                    
+                    const value = this.getAttribute('data-value');
+                    feelingInput.value = value;
+                    this.querySelector('div').classList.add(
+                        value === '1' ? 'bg-red-200' :
+                        value === '2' ? 'bg-orange-200' :
+                        value === '3' ? 'bg-yellow-200' :
+                        value === '4' ? 'bg-blue-200' : 'bg-green-200'
+                    );
+                    
+                    updateProgress();
+                });
+            });
+            
+            // Mise à jour de la progression
+            function updateProgress() {
+                let filledFields = 0;
+                const totalFields = 7; // 5 textareas + 2 hidden inputs
+                
+                // Vérifier les champs texte
+                formFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (field.value.trim() !== '') filledFields++;
+                });
+                
+                // Vérifier les sélections
+                if (achievementInput.value !== '') filledFields++;
+                if (feelingInput.value !== '') filledFields++;
+                
+                completion = Math.round((filledFields / totalFields) * 100);
+                
+                // Mettre à jour le cercle de progression
+                const offset = circumference - (completion / 100) * circumference;
+                progressCircle.style.strokeDashoffset = offset;
+                
+                // Mettre à jour le texte
+                progressText.textContent = `${completion}%`;
+                completionText.textContent = `${completion}% complété`;
+            }
+            
+            // Écouter les changements dans les champs de texte
+            formFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                field.addEventListener('input', updateProgress);
+            });
+            
+            // Sauvegarder le brouillon
+            saveDraftBtn.addEventListener('click', function() {
+                const formData = {};
+                formFields.forEach(fieldId => {
+                    formData[fieldId] = document.getElementById(fieldId).value;
+                });
+                formData['achievement-level'] = achievementInput.value;
+                formData['feeling-level'] = feelingInput.value;
+                
+                localStorage.setItem('reflectionDraft', JSON.stringify(formData));
+                
+                // Feedback visuel
+                const originalText = saveDraftBtn.innerHTML;
+                saveDraftBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Sauvegardé !';
+                saveDraftBtn.classList.remove('text-indigo-600');
+                saveDraftBtn.classList.add('text-green-600');
+                
+                setTimeout(() => {
+                    saveDraftBtn.innerHTML = originalText;
+                    saveDraftBtn.classList.remove('text-green-600');
+                    saveDraftBtn.classList.add('text-indigo-600');
+                }, 2000);
+            });
+            
+            // Charger le brouillon s'il existe
+            const draft = localStorage.getItem('reflectionDraft');
+            if (draft) {
+                const formData = JSON.parse(draft);
+                formFields.forEach(fieldId => {
+                    if (formData[fieldId]) {
+                        document.getElementById(fieldId).value = formData[fieldId];
+                    }
+                });
+                
+                if (formData['achievement-level']) {
+                    achievementInput.value = formData['achievement-level'];
+                    achievementCards.forEach(card => {
+                        if (card.getAttribute('data-value') === formData['achievement-level']) {
+                            card.click();
+                        }
+                    });
+                }
+                
+                if (formData['feeling-level']) {
+                    feelingInput.value = formData['feeling-level'];
+                    feelingCards.forEach(card => {
+                        if (card.getAttribute('data-value') === formData['feeling-level']) {
+                            card.click();
+                        }
+                    });
+                }
+                
+                updateProgress();
+            }
+            
+            // Réinitialiser le formulaire
+            resetBtn.addEventListener('click', function() {
+                if (confirm('Êtes-vous sûr de vouloir réinitialiser le formulaire ? Toutes vos modifications seront perdues.')) {
+                    form.reset();
+                    achievementCards.forEach(card => {
+                        card.querySelector('div').classList.remove('border-green-500', 'bg-green-50', 'border-yellow-500', 'bg-yellow-50', 'border-red-500', 'bg-red-50');
+                    });
+                    feelingCards.forEach(card => {
+                        card.querySelector('div').classList.remove('bg-red-200', 'bg-orange-200', 'bg-yellow-200', 'bg-blue-200', 'bg-green-200');
+                    });
+                    achievementInput.value = '';
+                    feelingInput.value = '';
+                    localStorage.removeItem('reflectionDraft');
+                    updateProgress();
+                }
+            });
+            
+            // Soumettre le formulaire
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validation basique
+                if (!achievementInput.value) {
+                    alert('Veuillez sélectionner le niveau d\'atteinte de vos objectifs.');
+                    return;
+                }
+                
+                if (!feelingInput.value) {
+                    alert('Veuillez sélectionner votre ressenti global.');
+                    return;
+                }
+                
+                // Simuler l'envoi des données
+                const formData = new FormData(form);
+                console.log('Données du formulaire:', Object.fromEntries(formData));
+                
+                // Afficher le modal de succès
+                successModal.classList.remove('hidden');
+                localStorage.removeItem('reflectionDraft');
+            });
+            
+            // Fermer le modal
+            closeModalBtn.addEventListener('click', function() {
+                successModal.classList.add('hidden');
+                form.reset();
+                achievementCards.forEach(card => {
+                    card.querySelector('div').classList.remove('border-green-500', 'bg-green-50', 'border-yellow-500', 'bg-yellow-50', 'border-red-500', 'bg-red-50');
+                });
+                feelingCards.forEach(card => {
+                    card.querySelector('div').classList.remove('bg-red-200', 'bg-orange-200', 'bg-yellow-200', 'bg-blue-200', 'bg-green-200');
+                });
+                achievementInput.value = '';
+                feelingInput.value = '';
+                updateProgress();
+            });
+            
+            // Animation d'apparition progressive des sections
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.fade-in').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
