@@ -7,16 +7,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-blue-50 font-sans text-gray-700">
-    
     <header class="flex items-center justify-between p-4 bg-white ">
-    <!-- Logo -->
     <div class="flex    items-center space-x-3">
-        <!-- Logo mobile -->
         <img src="../imge/ChatGPT_Image_Nov_4__2025__08_25_46_PM-removebg-preview(1) 2.png" 
              alt="Logo" 
              class="w-11 h-12 [@media_(min-width:600px)]:hidden">
-
-        <!-- Logo desktop -->
         <div class=" [@media_(max-width:600px)]:hidden  flex flex-col ">
             <img src="../imge/img__/ChatGPT_Image_Nov_4__2025__08_25_46_PM-removebg-preview(1) 1.png" 
                  alt="Logo" 
@@ -24,11 +19,7 @@
             <p class="text-gray-700  absolute top-[47px] left-[80px]  ">WELCOME BACK, OLEG!</p>
         </div>
     </div>
-
-
-
     <div  class="flex items-center   justify-around w-1/2 "> 
-    <!-- Navigation -->
     <nav class="hidden md:flex items-center gap-6">
         <a href="../index.html" 
            class="text-gray-700 hover:text-blue-500 transition-colors duration-200 font-medium">
@@ -39,9 +30,6 @@
             Dashboard
         </a>
     </nav>
-
-
-    <!-- Barre de recherche -->
     <div class="flex items-center w-48 md:w-64 bg-gray-50 border border-gray-300 rounded-2xl px-3 py-2 shadow-sm hover:shadow-md transition-shadow">
         <input 
             type="text" 
@@ -60,8 +48,6 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" />
         </svg>
     </div>
-
-    <!-- Avatar utilisateur -->
     <div class="flex-shrink-0">
         <img src="../imge/img& bg.png" 
              alt="Profile picture of Oleg" 
@@ -148,18 +134,19 @@
       <section class="flex flex-col lg:flex-row gap-4 lg:gap-6 items-center">
         <div class="flex flex-col bg-black w-full lg:w-1/3 h-60 items-center justify-center rounded-xl shadow">
           <h1>Recharge Your PhoneNumber</h1>
-          <div class="flex gap-2 w-[50%]">
+          
+          <div class="flex justify-center flex-col gap-5">
+            <div class="flex ml-5 gap-2 w-[50%] lg:w-[30%] lg:ml-1">
             <img class="w-36" src="../imge/IAM.jpg" alt="tesalat">
             <img class="w-36" src="../imge/inwi.jpg" alt="inwi imge">
             <img class="w-36" src="../imge/Orange.png" alt="Orange">
           </div>
-          <div class="flex justify-center flex-col gap-5">
-            <select class="w-[30rem] lg:w-[100%] lg:h-6 flex justify-center rounded-lg border border-gray-400 px-2 focus:outline-none">
+            <select class="w-[30rem] lg:ml-3 lg:w-[95%] lg:h-6 flex justify-center rounded-lg border border-gray-400 px-2 focus:outline-none">
                   <option>Orange</option>
                   <option>Maroc Telecome</option>
                   <option>INWI</option>
             </select>
-            <input type="text" class="w-full h-10 rounded-lg border border-gray-400 px-2 focus:outline-none">
+            <input type="text" class="w-full lg:w-[95%] lg:ml-3 h-10 rounded-lg border border-gray-400 px-2 focus:outline-none">
           </div>
         </div>
         <div class="bg-white w-full lg:w-2/3 h-60 rounded-xl shadow flex lg:flex-row gap-4 p-4 items-center">

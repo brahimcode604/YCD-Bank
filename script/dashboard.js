@@ -1,3 +1,6 @@
+let comptes = JSON.parse(localStorage.getItem("ycd_bank_accounts")) || [];
+
+console.log(comptes)
 // Function to Convert 
 async function convertCurrency(base = "USD", target = "EUR", amount = 1) {
     const res = await fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_ng8ycrK7cBYMMvT1QiT6nAIZK8SIvb5lZtglD4n3&base_currency=${base}`);
