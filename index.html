@@ -36,11 +36,13 @@
     <!-- Navigation -->
     <nav class="hidden md:flex items-center gap-6">
         <a href="index.html" 
-           class="text-gray-700 hover:text-blue-500 transition-colors duration-200 font-medium">
+            id="in"
+           class="hidden  text-gray-700 hover:text-blue-500 transition-colors duration-200 font-medium">
             Home
         </a>
         <a href="html/dashboard.html" 
-           class="text-gray-700 hover:text-blue-500 transition-colors duration-200 font-medium">
+            id="dash"
+           class=" hidden  text-gray-700 hover:text-blue-500  transition-colors duration-200 font-medium ">
             Dashboard
         </a>
     </nav>
@@ -191,35 +193,35 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="text-sm font-medium">Numéro CIN *</label>
-            <input type="text" placeholder="Ex: AB123456" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            <input type="text" placeholder="Ex: AB123456" id="cin" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
             <small class="text-gray-400">Votre carte d'identité nationale</small>
           </div>
           <div>
             <label class="text-sm font-medium">Date délivrance CIN *</label>
-            <input type="date" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            <input type="date"  id="cin_date" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
           </div>
 
           <div>
             <label class="text-sm font-medium">Nom *</label>
-            <input type="text" placeholder="Votre nom" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            <input type="text"  id="nom" placeholder="Votre nom" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
           </div>
           <div>
             <label class="text-sm font-medium">Prénom *</label>
-            <input type="text" placeholder="Votre prénom" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            <input type="text" id="prenom" placeholder="Votre prénom" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
           </div>
 
           <div>
             <label class="text-sm font-medium">Date de naissance *</label>
-            <input type="date" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            <input type="date" id="date_necence" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
           </div>
           <div>
             <label class="text-sm font-medium">Lieu de naissance *</label>
-            <input type="text" placeholder="Ville de naissance" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            <input type="text" id="nesence_date" placeholder="Ville de naissance" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
           </div>
 
           <div>
             <label class="text-sm font-medium">Nationalité *</label>
-            <select class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            <select id="Nationalite" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
               <option>-- Sélectionnez votre nationalité --</option>
               <option>Marocaine</option>
               <option>Française</option>
@@ -228,7 +230,7 @@
           </div>
           <div>
             <label class="text-sm font-medium">Civilité *</label>
-            <select class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            <select id="Civilite" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
               <option>-- Sélectionnez --</option>
               <option>M.</option>
               <option>Mme</option>
@@ -246,11 +248,11 @@
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="text-sm font-medium">Téléphone *</label>
-              <input type="text" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+212 6 00 00 00 00">
+              <input id="Telephone" type="text" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="+212 6 00 00 00 00">
             </div>
             <div>
-              <label class="text-sm font-medium">Adresse *</label>
-              <input type="text" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Ville, rue, code postal">
+              <label class="text-sm font-medium">email*</label>
+              <input id="email" type="text" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="email@gmail.com">
             </div>
           </div>
         </div>
@@ -258,7 +260,7 @@
         <!-- Étape 3 -->
         <div class="step hidden" id="content3">
           <h3 class="font-semibold text-gray-800 mb-2">Type de Compte</h3>
-          <select class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+          <select id="Type_de_Compte" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
             <option>-- Sélectionnez --</option>
             <option>Compte Courant</option>
             <option>Compte Épargne</option>
@@ -270,7 +272,7 @@
         <div class="step hidden text-center" id="content4">
           <h3 class="font-semibold text-gray-800 mb-2">Validation</h3>
           <p class="text-gray-600">Veuillez vérifier vos informations avant de valider votre demande d’ouverture de compte.</p>
-          <button class="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Valider</button>
+          <button class="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700" id="save_account">Valider</button>
         </div>
       </div>
 
