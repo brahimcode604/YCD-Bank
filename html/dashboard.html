@@ -89,18 +89,21 @@
     </section>
     
     <main class="px-4 md:px-10 lg:px-20 py-6 space-y-8 ml-16 lg:ml-0">
-      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+      <section class="grid relative grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         <div class="bg-gradient-to-r from-blue-700 to-indigo-700 text-white p-6 rounded-2xl shadow-lg relative overflow-hidden hover:scale-105 transition-transform duration-300">
           <div class="flex justify-between items-start">
             <div>
               <p class="text-xs uppercase opacity-80">Savings Account</p>
               <div class="flex gap-20 mt-2 text-3xl font-bold">
-                <h1 id="passwtext" >0.00 DH</h1>
-                <button>
-                  <img class="w-8 mb-2" src="../imge/closed.png" alt="password icon">
-                </button>
+                <h1 id="passwtext" >10000.00 DH</h1>
+                <div class="absolute left-60">
+                  <button id="showbtn">
+                    <img id="openimg" class="w-8 mb-2" src="../imge/open.png" alt="password icon">
+                    <img id="closeimg" class="w-8 mb-2" src="../imge/closed.png" alt="password icon">
+                  </button>
+                </div>
               </div>
-              <p class="text-xs mt-1 opacity-70">Account: **** 4582</p>
+              <p class="text-xs mt-1 opacity-70">Account: 6666 6666 6666 6666</p>
             </div>
             <span class="px-3 py-1 bg-emerald-500 rounded-full text-xs">Active</span>
           </div>
@@ -114,12 +117,20 @@
             </div>
           </div>
         </div>
-        <div class="bg-gradient-to-r from-gray-800 to-slate-800 text-white p-6 rounded-2xl shadow-lg relative overflow-hidden hover:scale-105 transition-transform duration-300">
+        <div class="bg-gradient-to-br from-gray-500 to-slate-800 text-white p-6 rounded-2xl shadow-lg relative overflow-hidden hover:scale-105 transition-transform duration-300">
           <div class="flex justify-between items-start">
             <div>
               <p class="text-xs uppercase opacity-80">Normal Account</p>
-              <div class="mt-2 text-3xl font-bold">0 DH</div>
-              <p class="text-xs mt-1 opacity-70">Account: **** 7391</p>
+              <div class="flex gap-20 mt-2 text-3xl font-bold">
+                <h1 id="passwtext1" >10000.00 DH</h1>
+                <div class="absolute left-60">
+                  <button id="showbtn1">
+                    <img id="openimg1" class="w-8 mb-2" src="../imge/open.png" alt="password icon">
+                    <img id="closeimg1" class="w-8 mb-2" src="../imge/closed.png" alt="password icon">
+                  </button>
+                </div>
+              </div>
+              <p class="text-xs mt-1 opacity-70">Account: 6666 6666 6666 6666</p>
             </div>
             <span class="px-3 py-1 bg-emerald-500 rounded-full text-xs">Active</span>
           </div>
@@ -135,11 +146,16 @@
         </div>
       </section>
       <section class="flex flex-col lg:flex-row gap-4 lg:gap-6 items-center">
-        <div class="flex flex-col bg-red-100 w-full lg:w-1/3 h-60 items-center justify-center rounded-xl shadow">
+        <div class="flex flex-col bg-black w-full lg:w-1/3 h-60 items-center justify-center rounded-xl shadow">
           <h1>Recharge Your PhoneNumber</h1>
-          <div>
-            <select class="w-full h-10 rounded-lg border border-gray-400 px-2 focus:outline-none">
-                  <option>Orange <img src="../imge/IAM.jpg" alt=""></option>
+          <div class="flex w-[50%]">
+            <img src="../imge/IAM.jpg" alt="tesalat">
+            <img src="../imge/inwi.jpg" alt="tesalat">
+            <img src="../imge/Orange.png" alt="tesalat">
+          </div>
+          <div class="flex justify-center flex-col gap-5">
+            <select class="w-[30rem] lg:w-[100%] lg:h-6 flex justify-center rounded-lg border border-gray-400 px-2 focus:outline-none">
+                  <option>Orange</option>
                   <option>Maroc Telecome</option>
                   <option>INWI</option>
             </select>
@@ -248,7 +264,16 @@
       <section class="flex flex-col lg:flex-row gap-6">
         <div class="bg-white p-4 rounded-2xl shadow w-full lg:w-1/3 space-y-4">
           <h3 class="font-semibold">Quick Transfer</h3>
-          <div id="Qtransfer" class="flex flex-wrap gap-2">
+          <div id="Qtransfer" class="flex relative flex-wrap gap-2">
+            <div id="usedpopup" class="absolute hidden flex-col px-3 h-60 rounded-lg border border-blue-500 text-center gap-5 bottom-20 left-2 bg-blue-50 shadow">
+               <h1 class="mt-2">Add a New User</h1>
+               <input id="transfuser" type="text" placeholder="User Name" class="px-1 mt-2 py-1 text-center border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" required>
+               <input id="transfcard" type="text" placeholder="Card Number" class="px-1 mt-2 py-1 text-center border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" required>
+               <div class="flex justify-center gap-20 mt-2">
+                  <button id="addbtntransfer" class="shadow bg-purple-600 hover:bg-purple-700 rounded-lg h-7 w-16 text-white">Add</button>
+                  <button class="shadow bg-red-200 rounded-lg h-7 w-16 hover:bg-red-300">Close</button>
+               </div>
+              </div>
             <button id="addbtn" class="flex items-center justify-center w-10 h-10 border-2 border-dashed border-blue-400 rounded-full">
               <img class="w-6 h-6" src="../imge/plus.png" alt="add">
             </button>
@@ -257,10 +282,6 @@
             <option>6666 6666 6666 6666 6666</option>
             <option>9999 9999 9999 9999 9999</option>
           </select>
-          <div class="flex flex-col md:flex-row gap-3">
-            <button class="w-full md:w-1/2 h-10 bg-white border border-blue-300 text-blue-500 rounded-lg hover:bg-blue-50">Save as Draft</button>
-            <button class="w-full md:w-1/2 h-10 bg-blue-400 text-white rounded-lg hover:bg-blue-700">Send Money</button>
-          </div>
         </div>
         <div class="mt-6 w-[100%] lg:w-[70%]">
           <div class="bg-white shadow-md rounded-2xl p-6 w-[100%] flex flex-col gap-4">
@@ -273,17 +294,18 @@
             </div>
             <h2 class="font-semibold text-gray-700">Transfer</h2>
           </div>
-          <div class="text-gray-400 cursor-pointer">•••</div>
         </div>
         <div class="flex flex-col items-center justify-between gap-3 lg:flex-row">
-          <div class="flex items-center border border-gray-300 rounded-xl px-3 py-2 w-full">
-            <input type="text" value="9876 8774 5443 0000 1289" class="flex-1 outline-none text-sm text-gray-700 bg-transparent" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" class="w-6 h-6 ml-2" />
-          </div>
-          <div class="flex items-center border border-gray-300 rounded-xl px-3 py-2 w-full">
-            <input type="text" value="9876 8774 5443 0000 1289" class="flex-1 outline-none text-sm text-gray-700 bg-transparent" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" class="w-6 h-6 ml-2" />
-          </div>
+          From
+            <select class="w-full h-10 rounded-lg border border-gray-400 px-2 focus:outline-none">
+              <option>6666 6666 6666 6666 6666</option>
+              <option>9999 9999 9999 9999 9999</option>
+            </select> 
+            To
+            <select class="w-full h-10 rounded-lg border border-gray-400 px-2 focus:outline-none">
+              <option>6666 6666 6666 6666 6666</option>
+              <option>9999 9999 9999 9999 9999</option>
+            </select>
           <button class="bg-purple-600 hover:bg-purple-700 text-white rounded-full p-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
