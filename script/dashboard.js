@@ -49,16 +49,23 @@ convertbtn.addEventListener('click', async () => {
 
 // dyal Recharge 
 
-const popup = document.getElementById("popup");
+    const popup = document.getElementById("popup");
+    const phonenumber = document.getElementById('phonenumber').value
     const openPopup = document.getElementById("openPopup");
     const closePopup = document.getElementById("closePopup");
     const cancelBtn = document.getElementById("cancelBtn");
 
-    openPopup.addEventListener("click", () => popup.classList.remove("hidden"));
-    closePopup.addEventListener("click", () => popup.classList.add("hidden"));
-    cancelBtn.addEventListener("click", () => popup.classList.add("hidden"));
+    openPopup.addEventListener("click", () => {
+        
+        popup.classList.remove("hidden")
+    });
+    cancelBtn.addEventListener("click", () => {
+        
+        popup.classList.add("hidden")
+    });
 
     // Close when clicking outside
     popup.addEventListener("click", (e) => {
-      if (e.target === popup) popup.classList.add("hidden");
+      
+        if (e.target === popup) popup.classList.add("hidden");
     });
