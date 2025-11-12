@@ -24,7 +24,8 @@ convertbtn.addEventListener('mouseout', () => {
     converttxt.style.display = 'none';
 });
 
-
+let comptes = JSON.parse(localStorage.getItem("ycd_bank_accounts")) || [];
+console.log(comptes);
 convertbtn.addEventListener('click', async () => {
     const base = document.getElementById('inputcurrnsi1').value;
     const target = document.getElementById('inputcurrnsi2').value;
