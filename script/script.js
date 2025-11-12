@@ -239,6 +239,23 @@ function getFieldLabel(fieldId) {
     return labels[fieldId] || fieldId;
 }
 
+
+
+function genererRIB(cin) {
+
+    
+    const cinNettoye = cin.replace(/\D/g, '');
+ 
+    if (cinNettoye.length < 6) {
+        throw new Error('Le CIN doit contenir au moins 6 chiffres');
+    }
+    const sixChiffresCIN = cinNettoye.substring(0, 6);
+    
+    const rib = `312134${sixChiffresCIN}55`;
+    
+    return rib;
+}
+
 // Gestion des comptes
 function getFormData() {
     return {
@@ -259,7 +276,8 @@ function getFormData() {
         solde_principal: "10000",
         solde_epargne: "0",
         numero_compte: generateAccountNumber(),
-        statut: "actif"
+        statut: "actif",
+        rep:genererRIB(document.getElementById("cin")?.value)    
     };
 }
 
@@ -280,6 +298,7 @@ function createAccount() {
         return;
     }
     
+     console.log(comptes);
     // Vérifier si le CIN existe déjà
     const compteExistant = comptes.find(compte => compte.cin === nouveauCompte.cin);
     if (compteExistant) {
@@ -408,3 +427,11 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
     exportBtn.onclick = exportAccounts;
     document.body.appendChild(exportBtn);
 }
+
+
+
+
+  console.log(comptes);
+
+  
+
