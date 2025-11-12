@@ -4,19 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
+ 
 </head>
 <body class="bg-blue-50 font-sans text-gray-700">
-    
     <header class="flex items-center justify-between p-4 bg-white ">
-    <!-- Logo -->
     <div class="flex    items-center space-x-3">
-        <!-- Logo mobile -->
         <img src="../imge/ChatGPT_Image_Nov_4__2025__08_25_46_PM-removebg-preview(1) 2.png" 
              alt="Logo" 
              class="w-11 h-12 [@media_(min-width:600px)]:hidden">
-
-        <!-- Logo desktop -->
         <div class=" [@media_(max-width:600px)]:hidden  flex flex-col ">
             <img src="../imge/img__/ChatGPT_Image_Nov_4__2025__08_25_46_PM-removebg-preview(1) 1.png" 
                  alt="Logo" 
@@ -24,11 +21,7 @@
             <p class="text-gray-700  absolute top-[47px] left-[80px]  ">WELCOME BACK, OLEG!</p>
         </div>
     </div>
-
-
-
     <div  class="flex items-center   justify-around w-1/2 "> 
-    <!-- Navigation -->
     <nav class="hidden md:flex items-center gap-6">
         <a href="../index.html" 
            class="text-gray-700 hover:text-blue-500 transition-colors duration-200 font-medium">
@@ -39,9 +32,6 @@
             Dashboard
         </a>
     </nav>
-
-
-    <!-- Barre de recherche -->
     <div class="flex items-center w-48 md:w-64 bg-gray-50 border border-gray-300 rounded-2xl px-3 py-2 shadow-sm hover:shadow-md transition-shadow">
         <input 
             type="text" 
@@ -60,8 +50,6 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" />
         </svg>
     </div>
-
-    <!-- Avatar utilisateur -->
     <div class="flex-shrink-0">
         <img src="../imge/img& bg.png" 
              alt="Profile picture of Oleg" 
@@ -69,31 +57,34 @@
     </div>
     </div>
 </header>
-    <section class="[@media_(min-width:766px)]:hidden fixed left-0 top-12 h-full w-16 z-50 flex flex-col justify-between py-12">
-      <div class="flex flex-col items-center gap-8">
-        <a href="../index.html" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
-          <img src="../imge/icon/Home.png" alt="Home" class="w-6 h-6">
-        </a>
-        <a href="dash" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
-          <img src="../imge/icon/dash_bord.png" alt="Dashboard" class="w-6 h-6">
-        </a>
-      </div>
-      <div class="flex flex-col items-center gap-8">
-        <a href="seteng" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
-          <img src="../imge/icon/setteing.png" alt="Settings" class="w-6 h-6">
-        </a>
-        <a href="logout" class="p-2 rounded-lg hover:bg-red-50 transition-colors">
-          <img src="../imge/icon/log out.png" alt="Logout" class="w-6 h-6">
-        </a>
-      </div>
+    <section class="md:hidden fixed left-0 top-12 h-full w-16 z-50 flex flex-col justify-between py-12 bg-white shadow-lg" id="barre_verticale">
+        <!-- Section supérieure - Navigation principale -->
+        <div class="flex flex-col items-center gap-8">
+            <a href="../index.html" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <i class="fas fa-home text-gray-600"></i>
+            </a>
+            <a href="../html/dashboard.html" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <i class="fas fa-chart-bar text-gray-600"></i>
+            </a>
+        </div>
+
+        <!-- Section inférieure - Actions -->
+        <div class="flex flex-col items-center gap-8">
+            <a href="../settings.html" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <i class="fas fa-cog text-gray-600"></i>
+            </a>
+            <a href="../logout.html" class="p-2 rounded-lg hover:bg-red-50 transition-colors">
+                <i class="fas fa-sign-out-alt text-red-500"></i>
+            </a>
+        </div>
     </section>
-    
+
     <main class="px-4 md:px-10 lg:px-20 py-6 space-y-8 ml-16 lg:ml-0">
       <section class="grid relative grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         <div class="bg-gradient-to-r from-blue-700 to-indigo-700 text-white p-6 rounded-2xl shadow-lg relative overflow-hidden hover:scale-105 transition-transform duration-300">
           <div class="flex justify-between items-start">
             <div>
-              <p class="text-xs uppercase opacity-80">Savings Account</p>
+              <p class="text-xs uppercase opacity-80">Principal Account</p>
               <div class="flex gap-20 mt-2 text-3xl font-bold">
                 <h1 id="passwtext" >10000.00 DH</h1>
                 <div class="absolute left-60">
@@ -120,7 +111,7 @@
         <div class="bg-gradient-to-br from-gray-500 to-slate-800 text-white p-6 rounded-2xl shadow-lg relative overflow-hidden hover:scale-105 transition-transform duration-300">
           <div class="flex justify-between items-start">
             <div>
-              <p class="text-xs uppercase opacity-80">Normal Account</p>
+              <p class="text-xs uppercase opacity-80">Saving Account</p>
               <div class="flex gap-20 mt-2 text-3xl font-bold">
                 <h1 id="passwtext1" >10000.00 DH</h1>
                 <div class="absolute left-60">
@@ -146,22 +137,48 @@
         </div>
       </section>
       <section class="flex flex-col lg:flex-row gap-4 lg:gap-6 items-center">
-        <div class="flex flex-col bg-black w-full lg:w-1/3 h-60 items-center justify-center rounded-xl shadow">
-          <h1>Recharge Your PhoneNumber</h1>
-          <div class="flex gap-2 w-[50%]">
-            <img class="w-36" src="../imge/IAM.jpg" alt="tesalat">
-            <img class="w-36" src="../imge/inwi.jpg" alt="inwi imge">
-            <img class="w-36" src="../imge/Orange.png" alt="Orange">
+          <div class="flex flex-col bg-white w-full lg:w-1/3 h-60 items-center justify-around rounded-xl shadow">
+            <div class="flex justify-center flex-col gap-4">
+              <div class="flex ml-5 gap-2 w-[95%] lg:w-[95%] lg:ml-1">
+                <img src="../imge/recharge.png" alt="tesalat">
+              </div>
+              <div class=" flex items-center justify-center">
+                <button id="openPopup" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">
+                  Recharge Phone
+                </button>
+                <div id="popup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                  <div class="bg-white rounded-2xl shadow-lg p-6 w-80 relative animate-fadeIn">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Phone Recharge</h2>
+                    <form class="space-y-3">
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <input id="phonenumber" type="tel" placeholder="e.g. 06/0712345678" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Operator</label>
+                        <select class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                          <option>Orange</option>
+                          <option>Inwi</option>
+                          <option>Maroc Telecom</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Amount (MAD)</label>
+                        <input type="number" min="5" step="5" placeholder="e.g. 10"
+                          class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                      </div>
+                      <div class="flex justify-between mt-5">
+                        <button type="button" id="cancelBtn"
+                          class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">Cancel</button>
+                        <button type="submit"
+                          class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Recharge</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="flex justify-center flex-col gap-5">
-            <select class="w-[30rem] lg:w-[100%] lg:h-6 flex justify-center rounded-lg border border-gray-400 px-2 focus:outline-none">
-                  <option>Orange</option>
-                  <option>Maroc Telecome</option>
-                  <option>INWI</option>
-            </select>
-            <input type="text" class="w-full h-10 rounded-lg border border-gray-400 px-2 focus:outline-none">
-          </div>
-        </div>
         <div class="bg-white w-full lg:w-2/3 h-60 rounded-xl shadow flex lg:flex-row gap-4 p-4 items-center">
           <div class="flex flex-col justify-between w-full lg:w-1/2">
             <h2 class="text-xl lg:text-2xl font-bold">Cashback up to 60%</h2>
@@ -265,15 +282,17 @@
         <div class="bg-white p-4 rounded-2xl shadow w-full lg:w-1/3 space-y-4">
           <h3 class="font-semibold">Quick Transfer</h3>
           <div id="Qtransfer" class="flex relative flex-wrap gap-2">
-            <div id="usedpopup" class="absolute hidden flex-col px-3 h-60 rounded-lg border border-blue-500 text-center gap-5 bottom-20 left-2 bg-blue-50 shadow">
-               <h1 class="mt-2">Add a New User</h1>
-               <input id="transfuser" type="text" placeholder="User Name" class="px-1 mt-2 py-1 text-center border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" required>
-               <input id="transfcard" type="text" placeholder="Card Number" class="px-1 mt-2 py-1 text-center border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" required>
-               <div class="flex justify-center gap-20 mt-2">
-                  <button id="addbtntransfer" class="shadow bg-purple-600 hover:bg-purple-700 rounded-lg h-7 w-16 text-white">Add</button>
-                  <button class="shadow bg-red-200 rounded-lg h-7 w-16 hover:bg-red-300">Close</button>
+            <div id="usedpopup" class="absolute hidden flex-col px-3 h-60 rounded-lg border border-blue-500 text-center gap-5 top-16 left-2 bg-blue-50 shadow">
+              <div >
+                <h1 class="mt-2">Add a New User</h1>
+                <input id="transfuser" type="text" placeholder="User Name" class="px-1 mt-2 py-1 text-center border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" required>
+                <input id="transfcard" type="text" placeholder="Card Number" class="px-1 mt-2 py-1 text-center border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" required>
+                <div class="flex justify-center gap-20 mt-2">
+                    <button id="addbtntransfer" class="shadow bg-purple-600 hover:bg-purple-700 rounded-lg h-7 w-16 text-white">Add</button>
+                    <button id="removebtntransfer" class="shadow bg-red-200 rounded-lg h-7 w-16 hover:bg-red-300">Close</button>
+                </div>
                </div>
-              </div>
+            </div>
             <button id="addbtn" class="flex items-center justify-center w-10 h-10 border-2 border-dashed border-blue-400 rounded-full">
               <img class="w-6 h-6" src="../imge/plus.png" alt="add">
             </button>
@@ -339,7 +358,7 @@
       </section>
     </main>
 
-    <footer>
+    <footer class="ml-16 lg:ml-0">
       <div class="flex flex-col items-center justify-center mt-10 gap-14">
         <div class="w-[92%] h-[2px] bg-red-600"></div>
         <div class="h-72 lg:flex lg:gap-48 lg:h-52">

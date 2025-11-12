@@ -5,49 +5,57 @@
 */
 // for Quick Transfer
 
-const Qtransfer = document.getElementById('Qtransfer');
-const addbtn = document.getElementById('addbtn');
-let count = 0 ;
 
-addbtn.addEventListener('click', () => {
-
+let count = 0;
+const transfuser = document.getElementById('transfuser');
+const transfcard = document.getElementById('transfcard');
 const usedpopup = document.getElementById('usedpopup');
 const addbtntransfer = document.getElementById('addbtntransfer');
+const removebtntransfer = document.getElementById('removebtntransfer');
+const Qtransfer = document.getElementById('Qtransfer');
+const addbtn = document.getElementById('addbtn');
 
-usedpopup.style.display = 'flex' //teban l popup dyal bash n addi l user o RIB dyalo
+// open popup
+addbtn.addEventListener('click', () => {
+  usedpopup.style.display = 'flex';
+});
 
-addbtntransfer.addEventListener('click', ()=>{
-const transfuser = document.getElementById('transfuser').value;
-const transfcard = document.getElementById('transfcard').value;
+// close popup
+removebtntransfer.addEventListener('click', () => {
+  usedpopup.style.display = 'none';
+});
 
-if(count < 5 ){
-    count++
-    console.log(transfuser)
-    console.log(transfcard)
-   const newdiv = document.createElement('div');
-   newdiv.classList = 'w-10';
-   newdiv.id = `face${count}`
-   newdiv.innerHTML = `
-   <img class="rounded-full" src="../imge/face.jpg" alt="random Cartoon face">
-   <p>${transfuser}</p>
-   <button id="remove${count}">X</button>`
-   Qtransfer.prepend(newdiv);
-        const remove = document.getElementById('remove'+count);
-        remove.addEventListener('click', (e) => {
-            e.target.parentElement.remove();
-        count--
-        })
-   }
-   else{
-    alert("u can't add more than 5")
-   }
-   })
+// new transfer card
+addbtntransfer.addEventListener('click', () => {
+  if (count < 5) {
+    count++;
+    const newdiv = document.createElement('div');
+    newdiv.classList = 'w-10 flex flex-col items-center gap-1';
+    newdiv.id = `face${count}`;
+    newdiv.innerHTML = `
+      <img class="rounded-full w-10 h-10" src="../imge/face.jpg" alt="random Cartoon face">
+      <p class="text-sm">${transfuser.value}</p>
+      <button id="remove${count}" class="text-red-500 text-xs">X</button>
+    `;
+    Qtransfer.prepend(newdiv);
 
-})
+    // remove card
+    const remove = document.getElementById('remove' + count);
+    remove.addEventListener('click', (e) => {
+      e.target.parentElement.remove();
+      count--;
+    });
 
-// for saving Account text Show
+  } else {
+    alert("You can't add more than 5 users");
+  }
+});
 
-const holder = '10000.00 DH';
+
+// Dyal Principal Account text Show
+
+const holder = comptes[0].solde_principal + 'DH';
+const holder2 = comptes[0].solde_epargne + 'DH';
 const showbtn = document.getElementById('showbtn');
 const openimg = document.getElementById('openimg');
 const closeimg = document.getElementById('closeimg');
@@ -71,7 +79,8 @@ showbtn.addEventListener('click', () =>{
       }
 })
 
-// for Normal Account text Show
+
+// Dyal Saving Account text Show
 
 const showbtn1 = document.getElementById('showbtn1');
 const openimg1 = document.getElementById('openimg1');
@@ -87,7 +96,7 @@ showbtn1.addEventListener('click', () =>{
       if(openimg1.style.display === 'none'){
       closeimg1.style.display = 'none'
       openimg1.style.display = 'flex';
-      h11.innerHTML = holder;
+      h11.innerHTML = holder2;
       }
       else if( closeimg1.style.display === 'none'){
       closeimg1.style.display = 'flex'

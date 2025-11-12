@@ -1,4 +1,9 @@
-// Function to Convert 
+let comptes = JSON.parse(localStorage.getItem("ycd_bank_accounts")) || [];
+
+console.log(comptes)
+console.log(comptes[0].cin)
+
+// Function dyal Convert 
 async function convertCurrency(base = "USD", target = "EUR", amount = 1) {
     const res = await fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_ng8ycrK7cBYMMvT1QiT6nAIZK8SIvb5lZtglD4n3&base_currency=${base}`);
     const data = await res.json();
@@ -42,4 +47,25 @@ convertbtn.addEventListener('click', async () => {
     resultDisplay.textContent = result;
 });
 
-// 
+// dyal Recharge 
+
+    const popup = document.getElementById("popup");
+    const phonenumber = document.getElementById('phonenumber').value
+    const openPopup = document.getElementById("openPopup");
+    const closePopup = document.getElementById("closePopup");
+    const cancelBtn = document.getElementById("cancelBtn");
+
+    openPopup.addEventListener("click", () => {
+        
+        popup.classList.remove("hidden")
+    });
+    cancelBtn.addEventListener("click", () => {
+        
+        popup.classList.add("hidden")
+    });
+
+    // Close when clicking outside
+    popup.addEventListener("click", (e) => {
+      
+        if (e.target === popup) popup.classList.add("hidden");
+    });
