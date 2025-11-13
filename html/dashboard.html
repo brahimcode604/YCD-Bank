@@ -86,7 +86,7 @@
             <div>
               <p class="text-[1rem] uppercase opacity-80">Principal Account</p>
               <div class="flex gap-20 mt-2 text-3xl font-bold">
-                <h1 id="passwtext" >10000.00 DH</h1>
+                <h1 id="passwtext" >100.00 DH</h1>
                 <div class="absolute left-60">
                   <button id="showbtn">
                     <img id="openimg" class="w-8 mb-2" src="../imge/closed.png" alt="password icon">
@@ -149,7 +149,7 @@
                 <div id="popup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                   <div class="bg-white rounded-2xl shadow-lg p-6 w-80 relative animate-fadeIn">
                         <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Phone Recharge</h2>
-                    <form class="space-y-3">
+                    <form id="recharge" class="space-y-3">
                       <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                         <input id="phonenumber" type="tel" placeholder="e.g. 06/0712345678" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
@@ -164,7 +164,7 @@
                       </div>
                       <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Amount (MAD)</label>
-                        <input type="number" min="5" step="5" placeholder="e.g. 10"
+                        <input id="Rechargeamount" type="number" min="5" step="5" placeholder="e.g. 10"
                           class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
                       </div>
                       <div class="flex justify-between mt-5">
@@ -181,7 +181,7 @@
           </div>
         <div class="bg-white w-full lg:w-2/3 h-60 rounded-xl shadow flex lg:flex-row gap-4 p-4 items-center">
   <div class="flex flex-col justify-between w-full lg:w-1/2">
-    <h2 class="text-xl lg:text-2xl font-bold">Cashback up to 60%</h2>
+    <h2 class="text-[2rem] lg:text-2xl font-bold">Cashback up to 30%</h2>
     <p class="text-sm lg:text-base mt-2">
       Pay bills for a variety of goods and services using your device.
     </p>
@@ -304,20 +304,6 @@
           <td class="px-4 py-2 text-sm text-green-600 font-bold">+500 DH</td>
           <td class="px-4 py-2 text-sm text-gray-700">1500 DH</td>
         </tr>
-        <tr>
-          <td class="px-4 py-2 text-sm text-gray-600">2025-11-11 18:20</td>
-          <td class="px-4 py-2 text-sm text-yellow-500 font-semibold">Payment</td>
-          <td class="px-4 py-2 text-sm text-gray-700">Invoice INV12345</td>
-          <td class="px-4 py-2 text-sm text-red-600 font-bold">-250 DH</td>
-          <td class="px-4 py-2 text-sm text-gray-700">1000 DH</td>
-        </tr>
-        <tr>
-          <td class="px-4 py-2 text-sm text-gray-600">2025-11-10 12:45</td>
-          <td class="px-4 py-2 text-sm text-purple-500 font-semibold">Transfer</td>
-          <td class="px-4 py-2 text-sm text-gray-700">Sent to Mouad</td>
-          <td class="px-4 py-2 text-sm text-red-600 font-bold">-200 DH</td>
-          <td class="px-4 py-2 text-sm text-gray-700">750 DH</td>
-        </tr>
       </tbody>
     </table>
   </div>
@@ -426,20 +412,50 @@
         <div class="flex flex-col items-center justify-between gap-3 lg:flex-row">
           From
             <select class="w-full h-10 rounded-lg border border-gray-400 px-2 focus:outline-none">
-              <option>6666 6666 6666 6666 6666</option>
-              <option>9999 9999 9999 9999 9999</option>
+              <option id="RIB1">6666 6666 6666 6666 6666</option>
+              <option id="RIB2">9999 9999 9999 9999 9999</option>
             </select> 
             To
             <select class="w-full h-10 rounded-lg border border-gray-400 px-2 focus:outline-none">
-              <option>6666 6666 6666 6666 6666</option>
-              <option>9999 9999 9999 9999 9999</option>
+              <option id="RIB3">6666 6666 6666 6666 6666</option>
+              <option id="RIB4">9999 9999 9999 9999 9999</option>
             </select>
-          <button class="bg-purple-600 hover:bg-purple-700 text-white rounded-full p-3">
+          <button id="openPopuptr" class="bg-purple-600 hover:bg-purple-700 text-white rounded-full p-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
         </div>
+        <div id="popuptr" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                  <div class="bg-white rounded-2xl shadow-lg p-6 w-80 relative animate-fadeIn">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Phone Recharge</h2>
+                    <form id="rechargetr" class="space-y-3">
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <input id="phonenumbertr" type="tel" placeholder="e.g. 06/0712345678" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Operator</label>
+                        <select class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                          <option>Orange</option>
+                          <option>Inwi</option>
+                          <option>Maroc Telecom</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Amount (MAD)</label>
+                        <input id="Rechargeamounttr" type="number" min="5" step="5" placeholder="e.g. 10"
+                          class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                      </div>
+                      <div class="flex justify-between mt-5">
+                        <button type="button" id="cancelBtntr"
+                          class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">Cancel</button>
+                        <button type="submittr"
+                          class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Recharge</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
         <p class="text-gray-400 text-xs text-center">VISA OR MASTERCARD OF ANY MOROCCAN BANK</p>
       </div>
         </div>

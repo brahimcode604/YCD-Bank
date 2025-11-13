@@ -4,19 +4,17 @@ let comptes = JSON.parse(localStorage.getItem("ycd_bank_accounts")) || [];
 console.log(comptes)
 console.log(comptes[0].cin)
 
-const Principalsold = comptes[1].solde_principal ;
+let Principalbalance = parseInt(comptes[1].solde_principal)
+let Savingbalance = parseInt(comptes[1].solde_epargne)
 
 //Account RIB : 6666 6666 6666 6666
-    const prancipalrib = document.getElementById('prancipalrib')
-      prancipalrib.innerHTML = 'Account: ' + comptes[1].rep;
+const prancipalrib = document.getElementById('prancipalrib')
+    prancipalrib.innerHTML = 'Account: ' + comptes[1].rep;
 
-
-
+console.log(Principalbalance)
 
 // Dyal Principal Account text Show
 
-const holder = comptes[1].solde_principal + ' DH';
-const holder2 = comptes[1].solde_epargne + ' DH';
 const showbtn = document.getElementById('showbtn');
 const openimg = document.getElementById('openimg');
 const closeimg = document.getElementById('closeimg');
@@ -31,7 +29,7 @@ showbtn.addEventListener('click', () =>{
       if(openimg.style.display === 'none'){
       closeimg.style.display = 'none'
       openimg.style.display = 'flex';
-      h1.innerHTML = holder;
+      h1.innerHTML = Principalbalance + ' DH';
       }
       else if( closeimg.style.display === 'none'){
       closeimg.style.display = 'flex'
@@ -39,7 +37,6 @@ showbtn.addEventListener('click', () =>{
       h1.innerHTML = '*'.repeat(h1.textContent.length);
       }
 })
-
 
 // Dyal Saving Account text Show
 
@@ -57,7 +54,7 @@ showbtn1.addEventListener('click', () =>{
       if(openimg1.style.display === 'none'){
       closeimg1.style.display = 'none'
       openimg1.style.display = 'flex';
-      h11.innerHTML = holder2;
+      h11.innerHTML = Savingbalance + 'DH';
       }
       else if( closeimg1.style.display === 'none'){
       closeimg1.style.display = 'flex'
@@ -66,55 +63,6 @@ showbtn1.addEventListener('click', () =>{
       }
       let test = 30;
 })
-
-// 
-
-
-
-
-// Function dyal Convert 
-async function convertCurrency(base = "USD", target = "EUR", amount = 1) {
-    const res = await fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_ng8ycrK7cBYMMvT1QiT6nAIZK8SIvb5lZtglD4n3&base_currency=${base}`);
-    const data = await res.json();
-    
-    const rate = data.data[target];
-    const result = amount * rate;
-    
-    console.log(`1 ${base} = ${rate} ${target}`);
-    console.log(`${amount} ${base} = ${result.toFixed(2)} ${target}`);
-    
-    return result.toFixed(2);
-}
-
-
-const convertbtn = document.getElementById('convertbtn');
-const converttxt = document.getElementById('converttxt');
-
-
-convertbtn.addEventListener('mouseover', () => {
-    converttxt.style.display = 'block';
-});
-convertbtn.addEventListener('mouseout', () => {
-    converttxt.style.display = 'none';
-});
-
-
-convertbtn.addEventListener('click', async () => {
-    const base = document.getElementById('inputcurrnsi1').value;
-    const target = document.getElementById('inputcurrnsi2').value;
-    const amountInput = document.querySelector('input[type="number"]');
-    const resultDisplay = document.getElementById('convrs');
-    
-    const amount = parseFloat(amountInput.value);
-    
-    if (isNaN(amount) || amount <= 0) {
-        resultDisplay.textContent = "Enter a valid amount";
-        return;
-    }
-
-    const result = await convertCurrency(base, target, amount);
-    resultDisplay.textContent = result;
-});
 
 // dyal Recharge 
 
@@ -133,17 +81,36 @@ convertbtn.addEventListener('click', async () => {
         popup.classList.add("hidden")
     });
 
-    // Close when clicking outside
+    // Close fash kn clicki outside
     popup.addEventListener("click", (e) => {
       
-        if (e.target === popup) popup.classList.add("hidden");
+        if (e.target === popup) {
+          popup.classList.add("hidden");
+        }
     });
 
-    let sent = 600 ; 
+  // Rechargeamount dyal recharge ID amount
+const recharge = document.getElementById('recharge');
 
-  //
+recharge.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const amount = parseFloat(document.getElementById('Rechargeamount').value);
 
-  const activeBtn = document.getElementById('activeBtn');
+  if(amount <= Principalbalance){
+    Principalbalance = Principalbalance - amount;
+
+    h1.innerHTML = Principalbalance + 'DH'
+
+    recharge.reset();
+    popup.classList.add("hidden")
+  } else {
+    
+  }
+})
+
+  // dyal invoises
+
+const activeBtn = document.getElementById('activeBtn');
 const invoicePopup = document.getElementById('invoicePopup');
 const closeInvoiceBtn = document.getElementById('closeInvoice');
 const cancelInvoiceBtn = document.getElementById('cancelInvoice');
@@ -152,7 +119,7 @@ const currentBalanceEl = document.getElementById('currentBalance');
 const paymentSuccess = document.getElementById('paymentSuccess');
 const paymentError = document.getElementById('paymentError');
 
-let currentBalance = 1000;
+currentBalanceEl.textContent = Principalbalance + 'DH'
 
 // Open popup when Active button clicked
 activeBtn.addEventListener('click', () => {
@@ -173,7 +140,9 @@ cancelInvoiceBtn.addEventListener('click', () => {
 
 // Click outside content to close
 invoicePopup.addEventListener('click', (e) => {
-  if(e.target === invoicePopup) invoicePopup.classList.add('hidden');
+  if(e.target === invoicePopup) {
+    invoicePopup.classList.add('hidden');
+  }
 });
 
 // Form submission
@@ -181,9 +150,10 @@ invoiceForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const amount = parseFloat(document.getElementById('invoiceAmount').value);
 
-  if(amount <= currentBalance){
-    currentBalance -= amount;
-    currentBalanceEl.textContent = currentBalance + ' DH';
+  if(amount <= Principalbalance){
+    Principalbalance -= amount;
+    currentBalanceEl.textContent = Principalbalance + ' DH';
+    h1.innerHTML = Principalbalance + 'DH'
     paymentSuccess.classList.remove('hidden');
     paymentError.classList.add('hidden');
     invoiceForm.reset();
@@ -228,3 +198,40 @@ convertBtn.addEventListener('click', () => {
   resultEl.classList.remove('text-red-600');
   resultEl.classList.add('text-green-700');
 });
+
+
+// dyal transfer men Principal account l Saving
+
+const popuptr = document.getElementById("popup");
+    const phonenumbertr = document.getElementById('phonenumbertr').value
+    const openPopuptr = document.getElementById("openPopuptr");
+    const closePopuptr = document.getElementById("closePopuptr");
+    const cancelBtntr = document.getElementById("cancelBtntr");
+
+    openPopuptr.addEventListener("click", () => {
+        
+        popuptr.classList.remove("hidden")
+    });
+    cancelBtntr.addEventListener("click", () => {
+        
+        popup.classList.add("hidden")
+    });
+
+    // Close fash kn clicki outside
+    popuptr.addEventListener("click", (e) => {
+      
+        if (e.target === popup) {
+          popuptr.classList.add("hidden");
+        }
+    });
+
+
+
+
+const RIB1 = document.getElementById('RIB1')
+const RIB2 = document.getElementById('RIB2')
+const RIB3 = document.getElementById('RIB3')
+const RIB4 = document.getElementById('RIB4')
+
+RIB1.innerHTML = comptes[1].rep;
+RIB4.innerHTML = comptes[1].rep;
