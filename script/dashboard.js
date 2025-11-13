@@ -2,15 +2,19 @@
 let comptes = JSON.parse(localStorage.getItem("ycd_bank_accounts")) || [];
 
 console.log(comptes)
-console.log(comptes[0].cin)
+let Principalbalance = parseInt(comptes[2].solde_principal)
+let Savingbalance = parseInt(comptes[2].solde_epargne)
 
-let Principalbalance = parseInt(comptes[1].solde_principal)
-let Savingbalance = parseInt(comptes[1].solde_epargne)
-
-//Account RIB : 6666 6666 6666 6666
+//Accounts RIB :
 const prancipalrib = document.getElementById('prancipalrib')
-    prancipalrib.innerHTML = 'Account: ' + comptes[1].rep;
+    prancipalrib.innerHTML = 'Account: ' + comptes[2].rep_principal;
 
+const epargnerib = document.getElementById('epargnerib')
+    epargnerib.innerHTML = 'Account: ' + comptes[2].rep_epargne;
+
+const fullname = document.getElementById('fullname')
+    fullname.innerHTML = comptes[2].nom + ' ' + comptes[2].prenom
+ 
 console.log(Principalbalance)
 
 // Dyal Principal Account text Show
@@ -67,7 +71,6 @@ showbtn1.addEventListener('click', () =>{
 // dyal Recharge 
 
     const popup = document.getElementById("popup");
-    const phonenumber = document.getElementById('phonenumber').value
     const openPopup = document.getElementById("openPopup");
     const closePopup = document.getElementById("closePopup");
     const cancelBtn = document.getElementById("cancelBtn");
@@ -91,21 +94,29 @@ showbtn1.addEventListener('click', () =>{
 
   // Rechargeamount dyal recharge ID amount
 const recharge = document.getElementById('recharge');
-
 recharge.addEventListener('submit', (e)=>{
   e.preventDefault();
   const amount = parseFloat(document.getElementById('Rechargeamount').value);
+  const phonenumber = document.getElementById('phonenumber').value
+ 
+    if( phonenumber.length === 10){
+      if(amount <= Principalbalance){
+        Principalbalance = Principalbalance - amount;
 
-  if(amount <= Principalbalance){
-    Principalbalance = Principalbalance - amount;
+        h1.innerHTML = Principalbalance + ' DH'
 
-    h1.innerHTML = Principalbalance + 'DH'
-
-    recharge.reset();
-    popup.classList.add("hidden")
-  } else {
-    
-  }
+        recharge.reset();
+        popup.classList.add("hidden")
+        alert(`Payment successful!`)
+        comptes[2].solde_principal = Principalbalance;
+        localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
+      } else {
+        alert('Update Your Balance')
+      }
+    }
+    else {
+      alert('Your Number is Invalid Must be 10 Numbers')
+    }
 })
 
   // dyal invoises
@@ -202,14 +213,34 @@ convertBtn.addEventListener('click', () => {
 
 // dyal transfer men Principal account l Saving
 
-const popuptr = document.getElementById("popuptr");
+    const popuptr = document.getElementById("popuptr");
     const openPopuptr = document.getElementById("openPopuptr");
     const closePopuptr = document.getElementById("closePopuptr");
     const cancelBtntr = document.getElementById("cancelBtntr");
 
+    const RIB1 = document.getElementById('RIB1');
+    const RIB2 = document.getElementById('RIB2');
+    const RIB3 = document.getElementById('RIB3');
+    const RIB4 = document.getElementById('RIB4');
+    const RIB1to = document.getElementById('RIB1to');
+    const RIB2to = document.getElementById('RIB2to');
+    const RIB1value = document.getElementById('RIB1value');
+    const RIB2value = document.getElementById('RIB2value');
+
+    RIB1.innerHTML ='Principal Account ' + comptes[2].rep_principal;
+    RIB2.innerHTML ='Saving Account ' + comptes[2].rep_epargne;
+    RIB3.innerHTML ='Saving Account ' + comptes[2].rep_epargne;
+    RIB4.innerHTML ='Principal Account ' + comptes[2].rep_principal;
+    
     openPopuptr.addEventListener("click", () => {
         
         popuptr.classList.remove("hidden")
+        RIB1to.innerHTML = RIB1value.value;
+        RIB2to.innerHTML = RIB2value.value;
+        if(RIB1value.value === RIB2value.value){
+          alert("hey");
+          popuptr.classList.add("hidden")
+        }
     });
     cancelBtntr.addEventListener("click", () => {
         
@@ -226,11 +257,4 @@ const popuptr = document.getElementById("popuptr");
 
 
 
-
-const RIB1 = document.getElementById('RIB1')
-const RIB2 = document.getElementById('RIB2')
-const RIB3 = document.getElementById('RIB3')
-const RIB4 = document.getElementById('RIB4')
-
-RIB1.innerHTML = comptes[1].rep;
-RIB4.innerHTML = comptes[1].rep;
+// 
