@@ -23,6 +23,7 @@ const showbtn = document.getElementById('showbtn');
 const openimg = document.getElementById('openimg');
 const closeimg = document.getElementById('closeimg');
 const h1 = document.getElementById('passwtext');
+const Mydiv = document.getElementById('History');
     
       h1.innerHTML = '*'.repeat(h1.textContent.length);
       closeimg.style.display = 'flex';
@@ -100,23 +101,42 @@ recharge.addEventListener('submit', (e)=>{
   const phonenumber = document.getElementById('phonenumber').value
  
     if( phonenumber.length === 10){
-      if(amount <= Principalbalance){
-        Principalbalance = Principalbalance - amount;
 
-        h1.innerHTML = Principalbalance + ' DH'
+          if(amount <= Principalbalance){
+            Principalbalance = Principalbalance - amount;
 
-        recharge.reset();
-        popup.classList.add("hidden")
-        alert(`Payment successful!`)
-        comptes[2].solde_principal = Principalbalance;
-        localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
-      } else {
-        alert('Update Your Balance')
+            h1.innerHTML = Principalbalance + ' DH'
+
+            recharge.reset();
+            popup.classList.add("hidden")
+            alert(`Payment successful!`)
+            // kataddi new table
+            const newdiv = document.createElement('tr');
+                newdiv.innerHTML = `
+
+          <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+          <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Top-up</td>
+          <td class="px-4 py-2 text-sm text-gray-700">Bank Transfer</td>
+          <td class="px-4 py-2 text-sm text-green-600 font-bold">+500 DH</td>
+          <td class="px-4 py-2 text-sm text-gray-700">1500 DH</td>
+
+          `
+          Mydiv.appendChild(newdiv)
+
+            comptes[2].solde_principal = Principalbalance;
+            localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
+          } else {
+            alert('Update Your Balance')
+          }
+    }
+
+      else if(phonenumber.length > 10){
+        alert('Your Number is Invalid Must be 10 Numbers')
       }
-    }
-    else {
-      alert('Your Number is Invalid Must be 10 Numbers')
-    }
+
+          else {
+            alert('Your Number is Invalid Must be 10 Numbers')
+          }
 })
 
   // dyal invoises
@@ -127,16 +147,12 @@ const closeInvoiceBtn = document.getElementById('closeInvoice');
 const cancelInvoiceBtn = document.getElementById('cancelInvoice');
 const invoiceForm = document.getElementById('invoiceForm');
 const currentBalanceEl = document.getElementById('currentBalance');
-const paymentSuccess = document.getElementById('paymentSuccess');
-const paymentError = document.getElementById('paymentError');
 
 currentBalanceEl.textContent = Principalbalance + 'DH'
 
-// Open popup when Active button clicked
+// Open popup Fash Active button clickd
 activeBtn.addEventListener('click', () => {
   invoicePopup.classList.remove('hidden');
-  paymentSuccess.classList.add('hidden');
-  paymentError.classList.add('hidden');
 });
 
 // Close popup
@@ -165,17 +181,17 @@ invoiceForm.addEventListener('submit', (e) => {
     Principalbalance -= amount;
     currentBalanceEl.textContent = Principalbalance + ' DH';
     h1.innerHTML = Principalbalance + 'DH'
-    paymentSuccess.classList.remove('hidden');
-    paymentError.classList.add('hidden');
+    alert(`Payment successful!`)
     invoiceForm.reset();
+    invoicePopup.classList.add('hidden');
+    comptes[2].solde_principal = Principalbalance;
+    localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
   } else {
-    paymentError.classList.remove('hidden');
-    paymentSuccess.classList.add('hidden');
+    alert(`Invalid . Please Update Your Balance`);
+    invoicePopup.classList.add('hidden');
   }
 });
 
-
-//
 
 // Static rates
 const rates = {
@@ -226,20 +242,21 @@ convertBtn.addEventListener('click', () => {
     const RIB2to = document.getElementById('RIB2to');
     const RIB1value = document.getElementById('RIB1value');
     const RIB2value = document.getElementById('RIB2value');
-
+    const Transfer = document.getElementById('Transfer');
+    
     RIB1.innerHTML ='Principal Account ' + comptes[2].rep_principal;
     RIB2.innerHTML ='Saving Account ' + comptes[2].rep_epargne;
     RIB3.innerHTML ='Saving Account ' + comptes[2].rep_epargne;
     RIB4.innerHTML ='Principal Account ' + comptes[2].rep_principal;
     
-    openPopuptr.addEventListener("click", () => {
+openPopuptr.addEventListener("click", () => {
         
-        popuptr.classList.remove("hidden")
+        popuptr.classList.remove("hidden");
         RIB1to.innerHTML = RIB1value.value;
         RIB2to.innerHTML = RIB2value.value;
         if(RIB1value.value === RIB2value.value){
-          alert("hey");
-          popuptr.classList.add("hidden")
+          alert("You Can't Transfer to the Same Account");
+          popuptr.classList.add("hidden");
         }
     });
     cancelBtntr.addEventListener("click", () => {
@@ -247,7 +264,7 @@ convertBtn.addEventListener('click', () => {
         popuptr.classList.add("hidden")
     });
 
-    // Close fash kn clicki outside
+// Close fash kn clicki outside
     popuptr.addEventListener("click", (e) => {
       
         if (e.target === popup) {
@@ -255,6 +272,55 @@ convertBtn.addEventListener('click', () => {
         }
     });
 
+Transfer.addEventListener('click', (e) => {
 
+    if ( RIB1value.value === 'Principal Account 3121341234563896165554'){
+
+      const Transferamount = document.getElementById('Transferamount').value.trim();
+      const transamount = parseInt(Transferamount);
+
+            if(transamount > Principalbalance){
+                alert(`Please Update Your Balance. You have : ${Principalbalance}DH`);
+                popuptr.classList.add("hidden")
+            }
+                else{
+                Principalbalance = Principalbalance - transamount;
+                Savingbalance = Savingbalance + transamount;
+                h1.innerHTML = Principalbalance + ' DH';
+                h11.innerHTML = Savingbalance + ' DH';
+                popuptr.classList.add("hidden")
+                alert(`Payment successful!`)
+                }
+    }
+      else{
+      const Transferamount = document.getElementById('Transferamount').value.trim();
+      const transamount = parseInt(Transferamount);
+
+            if(transamount > Savingbalance){
+              alert(`Please Update Your Balance. You have : ${Savingbalance}DH`);
+                popuptr.classList.add("hidden")
+            }
+                else{
+              Principalbalance = Principalbalance + transamount;
+              Savingbalance = Savingbalance - transamount;
+              h1.innerHTML = Principalbalance + ' DH';
+              h11.innerHTML = Savingbalance + ' DH';
+              popuptr.classList.add("hidden")
+              alert(`Payment successful!`)
+              }
+            }
+});
 
 // 
+
+const newdiv = document.createElement('tr');
+newdiv.innerHTML = `
+
+          <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+          <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Top-up</td>
+          <td class="px-4 py-2 text-sm text-gray-700">Bank Transfer</td>
+          <td class="px-4 py-2 text-sm text-green-600 font-bold">+500 DH</td>
+          <td class="px-4 py-2 text-sm text-gray-700">1500 DH</td>
+
+`
+Mydiv.appendChild(newdiv)

@@ -221,9 +221,6 @@
       </div>
     </form>
 
-    <p id="paymentSuccess" class="mt-3 text-green-600 text-center hidden">Payment successful!</p>
-    <p id="paymentError" class="mt-3 text-red-600 text-center hidden">Insufficient balance!</p>
-
     <button id="closeInvoice" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-lg">✕</button>
   </div>
 </div>
@@ -295,7 +292,7 @@
           <th class="px-4 py-2 text-sm font-medium text-gray-700">Balance</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-gray-200">
+      <tbody id="History" class="divide-y divide-gray-200">
         <tr>
           <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
           <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Top-up</td>
@@ -433,16 +430,15 @@
                         <h2 id="RIB2to" class="border border-spacing-0 text-center">RIB2</h2><br>
                       <div>
                         <label class="text-center block text-sm font-medium text-gray-700 mb-1">Amount (MAD)</label>
-                        <input id="Rechargeamounttr" type="number" min="5" step="5" placeholder="e.g. 10"
+                        <input id="Transferamount" type="number" min="5" step="5" placeholder="e.g. 10"
                           class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
                       </div>
                       <div class="flex justify-between mt-5">
                         <button type="button" id="cancelBtntr"
                           class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">Cancel</button>
-                        <button type="submittr"
+                        <button id="Transfer" type="submittr"
                           class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Transfer</button>
                       </div>
-                    </form>
                   </div>
                 </div>
         <p class="text-gray-400 text-xs text-center">VISA OR MASTERCARD OF ANY MOROCCAN BANK</p>
