@@ -15,8 +15,6 @@ const epargnerib = document.getElementById('epargnerib')
 const fullname = document.getElementById('fullname')
     fullname.innerHTML = comptes[2].nom + ' ' + comptes[2].prenom
  
-console.log(Principalbalance)
-
 // Dyal Principal Account text Show
 
 const showbtn = document.getElementById('showbtn');
@@ -110,16 +108,17 @@ recharge.addEventListener('submit', (e)=>{
             recharge.reset();
             popup.classList.add("hidden")
             alert(`Payment successful!`)
+
             // kataddi new table
             const newdiv = document.createElement('tr');
                 newdiv.innerHTML = `
 
           <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
-          <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Top-up</td>
-          <td class="px-4 py-2 text-sm text-gray-700">Bank Transfer</td>
-          <td class="px-4 py-2 text-sm text-green-600 font-bold">+500 DH</td>
-          <td class="px-4 py-2 text-sm text-gray-700">1500 DH</td>
-
+          <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Payments</td>
+          <td class="px-4 py-2 text-sm text-gray-700">Recharge</td>
+          <td class="px-4 py-2 text-sm text-red-600 font-bold">-${amount} DH</td>
+          <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+          <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
           `
           Mydiv.appendChild(newdiv)
 
@@ -186,6 +185,18 @@ invoiceForm.addEventListener('submit', (e) => {
     invoicePopup.classList.add('hidden');
     comptes[2].solde_principal = Principalbalance;
     localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
+    // kataddi new table
+            const newdiv = document.createElement('tr');
+            newdiv.innerHTML = `
+
+            <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+            <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Payments</td>
+            <td class="px-4 py-2 text-sm text-gray-700">invoice</td>
+            <td class="px-4 py-2 text-sm text-red-600 font-bold">-${amount} DH</td>
+            <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+            <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
+            `
+            Mydiv.appendChild(newdiv)
   } else {
     alert(`Invalid . Please Update Your Balance`);
     invoicePopup.classList.add('hidden');
@@ -290,6 +301,22 @@ Transfer.addEventListener('click', (e) => {
                 h11.innerHTML = Savingbalance + ' DH';
                 popuptr.classList.add("hidden")
                 alert(`Payment successful!`)
+                // kataddi new table
+                const newdiv = document.createElement('tr');
+                newdiv.innerHTML = `
+
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
+                <td class="px-4 py-2 text-sm text-gray-700">Transfer (Principal to Saving)</td>
+                <td class="px-4 py-2 text-sm text-red-600 font-bold">-${transamount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
+                `
+                Mydiv.appendChild(newdiv)
+
+                comptes[2].solde_principal = Principalbalance;
+                comptes[2].solde_epargne = Savingbalance;
+                localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
                 }
     }
       else{
@@ -307,20 +334,46 @@ Transfer.addEventListener('click', (e) => {
               h11.innerHTML = Savingbalance + ' DH';
               popuptr.classList.add("hidden")
               alert(`Payment successful!`)
+              // kataddi new table
+                const newdiv = document.createElement('tr');
+                newdiv.innerHTML = `
+
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
+                <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">+${transamount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
+                `
+                Mydiv.appendChild(newdiv)
+
+                comptes[2].solde_principal = Principalbalance;
+                comptes[2].solde_epargne = Savingbalance;
+                localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
               }
             }
 });
 
 // 
 
-const newdiv = document.createElement('tr');
-newdiv.innerHTML = `
+let transactionHistory = [];
 
-          <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
-          <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Top-up</td>
-          <td class="px-4 py-2 text-sm text-gray-700">Bank Transfer</td>
-          <td class="px-4 py-2 text-sm text-green-600 font-bold">+500 DH</td>
-          <td class="px-4 py-2 text-sm text-gray-700">1500 DH</td>
+transactionHistory.push({Type: "Top-up",Reference: "Bank Transfer",Amount:"200 DH"})
+transactionHistory.push({Type: "Payments",Reference: "Bank Pizza",Amount:"600 DH"})
 
-`
-Mydiv.appendChild(newdiv)
+/* //Testing
+for (let i = 0 ; i < 2 ;i++){
+  console.log(transactionHistory[i].Type);
+  const newdiv = document.createElement('tr');
+                newdiv.innerHTML = `
+
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">${transactionHistory[i].Type}</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${transactionHistory[i].Amount}</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">+${transactionHistory[i].Amount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
+                `
+                Mydiv.appendChild(newdiv)
+}
+                */
