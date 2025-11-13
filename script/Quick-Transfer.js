@@ -51,58 +51,17 @@ addbtntransfer.addEventListener('click', () => {
   }
 });
 
+// const addUserForm = document.getElementById("addUserForm");
 
-// Dyal Principal Account text Show
+addUserForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // prevent page reload
 
-const holder = comptes[0].solde_principal + 'DH';
-const holder2 = comptes[0].solde_epargne + 'DH';
-const showbtn = document.getElementById('showbtn');
-const openimg = document.getElementById('openimg');
-const closeimg = document.getElementById('closeimg');
-const h1 = document.getElementById('passwtext');
-    
-      h1.innerHTML = '*'.repeat(h1.textContent.length);
-      closeimg.style.display = 'flex';
-      openimg.style.display = 'none';
+  const username = document.getElementById("transfuser").value;
+  const cardNumber = document.getElementById("transfcard").value;
 
-showbtn.addEventListener('click', () =>{
-      
-      if(openimg.style.display === 'none'){
-      closeimg.style.display = 'none'
-      openimg.style.display = 'flex';
-      h1.innerHTML = holder;
-      }
-      else if( closeimg.style.display === 'none'){
-      closeimg.style.display = 'flex'
-      openimg.style.display = 'none';
-      h1.innerHTML = '*'.repeat(h1.textContent.length);
-      }
-})
+  console.log("User added:", username, cardNumber);
 
-
-// Dyal Saving Account text Show
-
-const showbtn1 = document.getElementById('showbtn1');
-const openimg1 = document.getElementById('openimg1');
-const closeimg1 = document.getElementById('closeimg1');
-const h11 = document.getElementById('passwtext1');
-    
-      h11.innerHTML = '*'.repeat(h1.textContent.length);
-      closeimg1.style.display = 'flex';
-      openimg1.style.display = 'none';
-
-showbtn1.addEventListener('click', () =>{
-      
-      if(openimg1.style.display === 'none'){
-      closeimg1.style.display = 'none'
-      openimg1.style.display = 'flex';
-      h11.innerHTML = holder2;
-      }
-      else if( closeimg1.style.display === 'none'){
-      closeimg1.style.display = 'flex'
-      openimg1.style.display = 'none';
-      h11.innerHTML = '*'.repeat(h1.textContent.length);
-      }
-})
-
-// 
+  // Reset form
+  addUserForm.reset();
+  usedpopup.classList.add("hidden"); // close popup
+});
