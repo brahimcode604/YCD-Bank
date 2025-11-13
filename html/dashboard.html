@@ -406,7 +406,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a1 1 0 001.22 0L20 8M5 19h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v9a2 2 0 002 2z" />
               </svg>
             </div>
-            <h2 class="font-semibold text-gray-700">Transfer</h2>
+            <h2 class="font-semibold text-gray-700">Transfer Between Your Accounts</h2>
           </div>
         </div>
         <div class="flex flex-col items-center justify-between gap-3 lg:flex-row">
@@ -428,22 +428,12 @@
         </div>
         <div id="popuptr" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                   <div class="bg-white rounded-2xl shadow-lg p-6 w-80 relative animate-fadeIn">
-                        <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Phone Recharge</h2>
-                    <form id="rechargetr" class="space-y-3">
+                        <h1 class="text-xl font-semibold text-gray-800 mb-4 text-center">Transfer</h1>
+                        <h2 class="border border-spacing-0 text-center">RIB1</h2>
+                        <p class="text-center">To</p>
+                        <h2 class="border border-spacing-0 text-center">RIB2</h2><br>
                       <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                        <input id="phonenumbertr" type="tel" placeholder="e.g. 06/0712345678" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                      </div>
-                      <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Operator</label>
-                        <select class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                          <option>Orange</option>
-                          <option>Inwi</option>
-                          <option>Maroc Telecom</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Amount (MAD)</label>
+                        <label class="text-center block text-sm font-medium text-gray-700 mb-1">Amount (MAD)</label>
                         <input id="Rechargeamounttr" type="number" min="5" step="5" placeholder="e.g. 10"
                           class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
                       </div>
@@ -451,7 +441,7 @@
                         <button type="button" id="cancelBtntr"
                           class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">Cancel</button>
                         <button type="submittr"
-                          class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Recharge</button>
+                          class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Transfer</button>
                       </div>
                     </form>
                   </div>

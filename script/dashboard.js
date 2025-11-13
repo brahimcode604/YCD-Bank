@@ -202,8 +202,7 @@ convertBtn.addEventListener('click', () => {
 
 // dyal transfer men Principal account l Saving
 
-const popuptr = document.getElementById("popup");
-    const phonenumbertr = document.getElementById('phonenumbertr').value
+const popuptr = document.getElementById("popuptr");
     const openPopuptr = document.getElementById("openPopuptr");
     const closePopuptr = document.getElementById("closePopuptr");
     const cancelBtntr = document.getElementById("cancelBtntr");
@@ -214,7 +213,7 @@ const popuptr = document.getElementById("popup");
     });
     cancelBtntr.addEventListener("click", () => {
         
-        popup.classList.add("hidden")
+        popuptr.classList.add("hidden")
     });
 
     // Close fash kn clicki outside
