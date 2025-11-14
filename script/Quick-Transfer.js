@@ -192,7 +192,6 @@ function updateUI() {
         }
         
         // Mettre à jour les RIB dans les sélecteurs
-        updateRIBSelectors();
     }
 }
 
