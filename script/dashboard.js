@@ -1,9 +1,19 @@
+let deletecount = 1 ;
+const Mydiv = document.getElementById('History');
+
+//to Clear LocalStorge
+//localStorage.removeItem('ycd_bank_History')
+
+
 // local storge
-let history
+//localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
+let historyofTransactions = JSON.parse(localStorage.getItem("ycd_bank_History")) || [];
+let historyofTransactionsID = 1;
+
 let comptes = JSON.parse(localStorage.getItem("ycd_bank_accounts")) || [];
 
-console.log(comptes)
 let Principalbalance = parseInt(comptes[2].solde_principal)
+
 let Savingbalance = parseInt(comptes[2].solde_epargne)
 
 //Accounts RIB :
@@ -15,14 +25,52 @@ const epargnerib = document.getElementById('epargnerib')
 
 const fullname = document.getElementById('fullname')
     fullname.innerHTML = comptes[2].nom + ' ' + comptes[2].prenom
- 
+
+// local storge dyal History 
+
+
+//historyofTransactions.push({ID: `${historyofTransactionsID}`,Type: "Top-up",Reference: "Bank Transfer",Amount:"200 DH"})
+//localStorage.setItem("ycd_bank_History", JSON.stringify(historyofTransactions));
+//historyofTransactionsID++;
+
+console.log(historyofTransactions)
+
+//Testing
+for (let i = 0 ; i < historyofTransactions.length ;i++){
+  console.log(historyofTransactions[i].Type);
+  const newdiv = document.createElement('tr');
+                newdiv.innerHTML = `
+
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">${historyofTransactions[i].Type}</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${historyofTransactions[i].Reference}</td>
+                <td class="px-4 py-2 text-sm text-red-600 font-bold">-${historyofTransactions[i].Amount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800">
+                <button class="text-red-700" id="ediibtn${deletecount}">Delete</button>
+                </td>
+                `
+                Mydiv.appendChild(newdiv)
+                historyofTransactionsID++;
+                const ediibtn = document.getElementById(`ediibtn${deletecount}`)
+                ediibtn.addEventListener('click',(e)=>{
+                  e.target.closest('tr').remove();
+                  console.log(e.target.parentElement)
+                  //const indexToRemove = myArray.findIndex(obj => obj.id === 2);
+
+                   //   if (indexToRemove !== -1) {
+                   //     myArray.splice(indexToRemove, 1);
+                   //   }
+                })
+            deletecount++;
+}
+
 // Dyal Principal Account text Show
 
 const showbtn = document.getElementById('showbtn');
 const openimg = document.getElementById('openimg');
 const closeimg = document.getElementById('closeimg');
 const h1 = document.getElementById('passwtext');
-const Mydiv = document.getElementById('History');
     
       h1.innerHTML = '*'.repeat(h1.textContent.length);
       closeimg.style.display = 'flex';
@@ -93,7 +141,7 @@ showbtn1.addEventListener('click', () =>{
     });
 
   // Rechargeamount dyal recharge ID amount
-let deletecount = 1 ;
+
 const recharge = document.getElementById('recharge');
 recharge.addEventListener('submit', (e)=>{
   e.preventDefault();
@@ -118,20 +166,24 @@ recharge.addEventListener('submit', (e)=>{
                 <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
                 <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
                 <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
-                <td class="px-4 py-2 text-sm text-green-600 font-bold">-${amount} DH</td>
+                <td class="px-4 py-2 text-sm text-red-600 font-bold">-${amount} DH</td>
                 <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
                 <td class="px-4 py-2 text-sm text-blue-800">
                 <button class="text-red-700" id="ediibtn${deletecount}">Delete</button>
                 </td>
                 `
                 Mydiv.appendChild(newdiv)
+                historyofTransactions.push({ID: `${historyofTransactionsID}`,Type: "Top-up",Reference: "Bank Transfer",Amount:`${amount}`})
+                localStorage.setItem("ycd_bank_History", JSON.stringify(historyofTransactions));
+                historyofTransactionsID++;
+                
                 const ediibtn = document.getElementById(`ediibtn${deletecount}`)
                 ediibtn.addEventListener('click',(e)=>{
                   e.target.closest('tr').remove();
                   console.log(e.target.parentElement)
                 })
             deletecount++;
-
+            console.log(historyofTransactions)
             comptes[2].solde_principal = Principalbalance;
             localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
           } else {
@@ -333,6 +385,7 @@ Transfer.addEventListener('click', (e) => {
                 </td>
                 `
                 Mydiv.appendChild(newdiv)
+
                 const ediibtn = document.getElementById(`ediibtn${deletecount}`)
                 ediibtn.addEventListener('click',(e)=>{
                   e.target.closest('tr').remove();
@@ -390,27 +443,9 @@ Transfer.addEventListener('click', (e) => {
 
 // 
 
-let transactionHistory = [];
 
-transactionHistory.push({Type: "Top-up",Reference: "Bank Transfer",Amount:"200 DH"})
-transactionHistory.push({Type: "Payments",Reference: "Bank Pizza",Amount:"600 DH"})
 
-/* //Testing
-for (let i = 0 ; i < 2 ;i++){
-  console.log(transactionHistory[i].Type);
-  const newdiv = document.createElement('tr');
-                newdiv.innerHTML = `
-
-                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
-                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">${transactionHistory[i].Type}</td>
-                <td class="px-4 py-2 text-sm text-gray-700">${transactionHistory[i].Amount}</td>
-                <td class="px-4 py-2 text-sm text-green-600 font-bold">+${transactionHistory[i].Amount} DH</td>
-                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
-                <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
-                `
-                Mydiv.appendChild(newdiv)
-}
-                */
+            
 
 // edit fi Transaction History
 
