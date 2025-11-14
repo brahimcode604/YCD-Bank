@@ -119,7 +119,9 @@ recharge.addEventListener('submit', (e)=>{
                 <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
                 <td class="px-4 py-2 text-sm text-green-600 font-bold">-${amount} DH</td>
                 <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
-                <td class="px-4 py-2 text-sm text-blue-800"><button id="ediibtn${deletecount}">Edit</button></td>
+                <td class="px-4 py-2 text-sm text-blue-800">
+                <button class="text-red-700" id="ediibtn${deletecount}">Delete</button>
+                </td>
                 `
                 Mydiv.appendChild(newdiv)
                 const ediibtn = document.getElementById(`ediibtn${deletecount}`)
@@ -201,7 +203,9 @@ invoiceForm.addEventListener('submit', (e) => {
                 <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
                 <td class="px-4 py-2 text-sm text-green-600 font-bold">-${amount} DH</td>
                 <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
-                <td class="px-4 py-2 text-sm text-blue-800"><button id="ediibtn${deletecount}">Edit</button></td>
+                <td class="px-4 py-2 text-sm text-blue-800">
+                <button id="ediibtn${deletecount}">Delete</button>
+                </td>
                 `
                 Mydiv.appendChild(newdiv)
                 const ediibtn = document.getElementById(`ediibtn${deletecount}`)
@@ -323,7 +327,9 @@ Transfer.addEventListener('click', (e) => {
                 <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
                 <td class="px-4 py-2 text-sm text-green-600 font-bold">-${transamount} DH</td>
                 <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
-                <td class="px-4 py-2 text-sm text-blue-800"><button id="ediibtn${deletecount}">Edit</button></td>
+                <td class="px-4 py-2 text-sm text-blue-800">
+                <button id="ediibtn${deletecount}">Delete</button>
+                </td>
                 `
                 Mydiv.appendChild(newdiv)
                 const ediibtn = document.getElementById(`ediibtn${deletecount}`)
@@ -362,7 +368,9 @@ Transfer.addEventListener('click', (e) => {
                 <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
                 <td class="px-4 py-2 text-sm text-green-600 font-bold">-${transamount} DH</td>
                 <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
-                <td class="px-4 py-2 text-sm text-blue-800"><button id="ediibtn${deletecount}">Edit</button></td>
+                <td class="px-4 py-2 text-sm text-blue-800">
+                <button id="ediibtn${deletecount}">Delete</button>
+                </td>
                 `
                 Mydiv.appendChild(newdiv)
                 const ediibtn = document.getElementById(`ediibtn${deletecount}`)
@@ -402,3 +410,6 @@ for (let i = 0 ; i < 2 ;i++){
                 Mydiv.appendChild(newdiv)
 }
                 */
+
+// edit fi Transaction History
+
