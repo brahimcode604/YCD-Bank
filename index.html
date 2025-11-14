@@ -63,7 +63,7 @@
     </header>
 
     <!-- Barre latérale mobile -->
-    <section class="md:hidden fixed left-0 top-12 h-full w-16 z-50 flex flex-col justify-between py-12 bg-white shadow-lg" id="barre_verticale">
+    <section class="md:hidden fixed left-0   h-full w-16 z-50 flex flex-col justify-between pb-24 bg-white shadow-lg" id="barre_verticale">
         <!-- Section supérieure - Navigation principale -->
         <div class="flex flex-col items-center gap-8">
             <a href="index.html" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
@@ -88,131 +88,128 @@
     <main>
         <!-- Section Hero -->
 
-          
-        <section class="md:ml-0 bg-[url('imge/bg.png')] md:bg-[url('imge/BG8ORDINATURE.png')] bg-cover bg-center flex items-end justify-center min-h-[60vh]">
-           <div class="flex justify-around items-center w-[100vw] ml-[20vw] "   > 
-            <article class="w-[250px] h-[300px] bg-[#fef7f7] rounded-2xl shadow-md flex flex-col items-center justify-center text-center p-4 mb-8">
-                <p class="text-sm text-gray-600 font-semibold mb-2">PERSONAL BANKING</p>
-                <p class="text-lg font-bold text-gray-800 mb-2">
-                    Ready to Watch Your <br> Money Grow ?
-                </p>
-                <p class="text-xs text-gray-500 mb-5">
-                    We will help you organize your money <br>
-                    smartly and get a free saving <br>
-                    account.
-                </p>
-                <button id="create_compte" class="bg-red-500 text-white px-6 py-2 rounded-full hover:bg-red-600 transition">
-                    Open Account
-                </button>
-            </article>
-
-              <!-- Section Login Optimisée -->
-<section id="log_in" class=" bg-[#fef7f7] rounded-2xl   p-4 max-w-md mx-auto my-12 animate-fade-in">
-    <!-- En-tête -->
-    <div class="text-center mb-7">
-        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-1">
-            <i class="fas fa-lock text-white text-1xl"></i>
-        </div>
-        <h2 class="text-1xl font-bold text-gray-800 mb-2">Connexion à votre compte</h2>
-        
-    </div>
-
-    <!-- Formulaire de connexion -->
-    <form id="loginForm" class="space-y-3">
-        <!-- Champ RIB -->
-        <div>
-            <label for="login_rib" class="block text-sm font-medium text-gray-700 mb-2">
-                <i class="fas fa-credit-card mr-2 text-blue-500"></i>
-                Numéro RIB
-            </label>
-            <div class="relative">
-                <input 
-                    type="text" 
-                    id="login_rib" 
-                    name="rib"
-                    maxlength="26"
-                    placeholder="312134XXXXXX55"
-                    class="w-full px-2 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    required
-                >
-                <i class="fas fa-hashtag absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-            </div>
-             
-        </div>
-
-        <!-- Champ Mot de passe -->
-        <div>
-            <label for="login_password" class="block text-sm font-medium text-gray-700 mb-2">
-                <i class="fas fa-key mr-2 text-blue-500"></i>
-                Mot de passe
-            </label>
-            <div class="relative">
-                <input 
-                    type="password" 
-                    id="login_password" 
-                    name="password"
-                    placeholder="Votre mot de passe"
-                    class="w-full px-2 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    required
-                >
-                <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                <button 
-                    type="button" 
-                    id="togglePassword"
-                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                >
-                    <i class="fas fa-eye"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Options supplémentaires -->
-        <div class="flex items-center justify-between text-sm">
-            <label class="flex items-center">
-                <input type="checkbox" id="remember_me" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                <span class="ml-2 text-gray-600">Se souvenir de moi</span>
-            </label>
-            <a href="#" class="text-blue-600 hover:text-blue-800 transition-colors">
-                Mot de passe oublié?
-            </a>
-        </div>
-
-        <!-- Bouton de connexion -->
-        <button 
-            type="submit" 
-            id="login_btn"
-            class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-2 px-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-2"
-        >
-            <i class="fas fa-sign-in-alt"></i>
-            Se connecter
-            <span id="login_loader" class="hidden">
-                <i class="fas fa-spinner fa-spin"></i>
-            </span>
-        </button>
-
-        
-    </form>
+        <section class="bg-[url('imge/bg.png')] md:bg-[url('imge/BG8ORDINATURE.png')] bg-cover bg-center min-h-[60vh] flex items-end justify-center min-[600px]:ml-16  py-10">
     
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-    <!-- Message d'erreur -->
-    <div id="login_error" class="hidden mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-        <div class="flex items-center">
-            <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>
-            <span id="error_message" class="text-red-700 text-sm"></span>
-        </div>
-    </div>
+        <!-- 🟥 Carte "Open Account" -->
+        <article class="w-full max-w-[280px] mx-auto bg-[#fef7f7] rounded-2xl shadow-md flex flex-col items-center text-center p-6">
+            <p class="text-sm text-gray-600 font-semibold mb-2">PERSONAL BANKING</p>
 
-    <!-- Message de succès -->
-    <div id="login_success" class="hidden mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-        <div class="flex items-center">
-            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-            <span id="success_message" class="text-green-700 text-sm">Connexion réussie!</span>
-        </div>
-    </div>
-</section>
+            <p class="text-lg font-bold text-gray-800 mb-2">
+                Ready to Watch Your <br> Money Grow?
+            </p>
 
-</div>
+            <p class="text-xs text-gray-500 mb-5">
+                We will help you organize your money <br>
+                smartly and get a free saving account.
+            </p>
+
+            <button id="create_compte" class="bg-red-500 text-white px-6 py-2 rounded-full hover:bg-red-600 transition">
+                Open Account
+            </button>
+        </article>
+
+
+        <!-- 🟦 Section Login -->
+        <section id="log_in" class="w-full max-w-md mx-auto bg-[#fef7f7] rounded-2xl p-6 animate-fade-in">
+
+            <!-- Header -->
+            <div class="text-center mb-7">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-1">
+                    <i class="fas fa-lock text-white text-xl"></i>
+                </div>
+                <h2 class="text-xl font-bold text-gray-800 mb-2">Connexion à votre compte</h2>
+            </div>
+
+            <!-- Form -->
+            <form id="loginForm" class="space-y-3">
+
+                <!-- RIB -->
+                <div>
+                    <label for="login_rib" class="block text-sm font-medium text-gray-700 mb-1">
+                        <i class="fas fa-credit-card mr-1 text-blue-500"></i>
+                        Numéro RIB
+                    </label>
+
+                    <div class="relative">
+                        <input 
+                            type="text"
+                            id="login_rib"
+                            maxlength="26"
+                            placeholder="312134XXXXXX55"
+                            class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                            required
+                        >
+                        <i class="fas fa-hashtag absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label for="login_password" class="block text-sm font-medium text-gray-700 mb-1">
+                        <i class="fas fa-key mr-1 text-blue-500"></i>
+                        Mot de passe
+                    </label>
+
+                    <div class="relative">
+                        <input 
+                            type="password"
+                            id="login_password"
+                            placeholder="Votre mot de passe"
+                            class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                            required
+                        >
+                        <i class="fas fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <button 
+                            type="button"
+                            id="togglePassword"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                        >
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Options -->
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="remember_me" class="rounded border-gray-300">
+                        <span class="ml-2 text-gray-600">Se souvenir de moi</span>
+                    </label>
+                    <a href="#" class="text-blue-600 hover:underline">Mot de passe oublié ?</a>
+                </div>
+
+                <!-- Button -->
+                <button 
+                    type="submit"
+                    id="login_btn"
+                    class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-2 rounded-lg font-semibold hover:scale-105 transition flex items-center justify-center gap-2"
+                >
+                    <i class="fas fa-sign-in-alt"></i>  
+                    Se connecter
+                    <span id="login_loader" class="hidden">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+                </button>
+
+            </form>
+
+            <!-- Error -->
+            <div id="login_error" class="hidden mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                <span class="text-red-700 text-sm">Erreur</span>
+            </div>
+
+            <!-- Success -->
+            <div id="login_success" class="hidden mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                <span class="text-green-700 text-sm">Connexion réussie!</span>
+            </div>
+
         </section>
+
+    </div>
+
+</section>
 
          
 
@@ -222,9 +219,9 @@
                 <h1 class="text-[#643074] font-bold text-2xl md:text-4xl">Services</h1>
             </div>
             <div class="flex justify-around flex-wrap gap-4">
-                <img src="imge/img__/download 1.png" alt="Service de transfert" class="w-24 h-24 md:w-32 md:h-32">
-                <img src="imge/img__/Social media design 1.png" alt="Service mobile" class="w-24 h-24 md:w-32 md:h-32">
-                <img src="imge/img__/undefined (1) 1.png" alt="Service sécurité" class="w-24 h-24 md:w-32 md:h-32">
+                <img src="imge/img__/download 1.png" alt="Service de transfert" class="w-[21vw] ">
+                <img src="imge/img__/Social media design 1.png" alt="Service mobile" class="w-[21vw] ">
+                <img src="imge/img__/undefined (1) 1.png" alt="Service sécurité" class="w-[21vw] ">
             </div>
         </section>
 
