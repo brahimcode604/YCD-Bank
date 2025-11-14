@@ -239,6 +239,23 @@ function getFieldLabel(fieldId) {
     return labels[fieldId] || fieldId;
 }
 
+
+
+function genererRIB(cin) {
+
+    
+    const cinNettoye = cin.replace(/\D/g, '');
+ 
+    if (cinNettoye.length < 6) {
+        throw new Error('Le CIN doit contenir au moins 6 chiffres');
+    }
+    const sixChiffresCIN = cinNettoye.substring(0, 6);
+    const random_rep= Math.floor(100000 + Math.random() * 900000);
+    const rib = `312134${sixChiffresCIN}${random_rep}55`;
+    
+    return rib;
+}
+
 // Gestion des comptes
 function getFormData() {
     return {
@@ -259,9 +276,13 @@ function getFormData() {
         solde_principal: "10000",
         solde_epargne: "0",
         numero_compte: generateAccountNumber(),
-        statut: "actif"
+        statut: "actif",
+        rep_principal:genererRIB(document.getElementById("cin")?.value)+"54",
+        rep_epargne : genererRIB(document.getElementById("cin")?.value)
     };
 }
+
+
 
 function generateAccountId() {
     return 'acc_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
@@ -280,6 +301,7 @@ function createAccount() {
         return;
     }
     
+     console.log(comptes);
     // Vérifier si le CIN existe déjà
     const compteExistant = comptes.find(compte => compte.cin === nouveauCompte.cin);
     if (compteExistant) {
@@ -408,3 +430,93 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
     exportBtn.onclick = exportAccounts;
     document.body.appendChild(exportBtn);
 }
+
+
+
+
+  console.log(comptes);
+
+
+
+
+
+  // --- GESTION DE CONNEXION --- //
+document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.getElementById("loginForm");
+    const loginRib = document.getElementById("login_rib");
+    const loginPassword = document.getElementById("login_password");
+    const loginBtn = document.getElementById("login_btn");
+    const loginLoader = document.getElementById("login_loader");
+    const errorBox = document.getElementById("login_error");
+    const successBox = document.getElementById("login_success");
+    const errorMsg = document.getElementById("error_message");
+
+
+    // Charger les comptes sauvegardés
+    const comptes = JSON.parse(localStorage.getItem("ycd_bank_accounts")) || [];
+
+    // Événement de connexion
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const rib = loginRib.value.trim();
+        const pwd = loginPassword.value.trim();
+
+        // console.log(rib+pwd);
+        // console.log(comptes);
+
+        // Vérifier que les champs ne sont pas vides
+        if (!rib || !pwd) {
+            showLoginError("Veuillez remplir tous les champs.");
+            return;
+        }
+
+
+
+
+ 
+         
+
+        const compteTrouve = comptes.find(   
+            c => (c.rep_principal === rib || c.rep_epargne === rib) && c.password === pwd
+        );
+
+        
+        if (!compteTrouve) {
+            showLoginError("RIB ou mot de passe incorrect !");
+            return;
+        }
+
+
+             const index_couent = comptes.findIndex(
+              c => (c.rep_principal === rib || c.rep_epargne === rib) && c.password === pwd);  
+            localStorage.setItem("ycd_bank_index",index_couent);
+            console.log(index_couent);
+
+
+        // Succès : afficher loader et rediriger
+        loginBtn.disabled = true;
+        loginLoader.classList.remove("hidden");
+        showLoginSuccess("Connexion réussie, redirection en cours...");
+
+        // Sauvegarder la session
+        localStorage.setItem("ycd_bank_connected", JSON.stringify(compteTrouve));
+
+        setTimeout(() => {
+            window.location.href = "html/dashboard.html";
+        }, 2000);
+    });
+
+    // --- Fonctions de message --- //
+    function showLoginError(message) {
+        errorBox.classList.remove("hidden");
+        successBox.classList.add("hidden");
+        errorMsg.textContent = message;
+    }
+
+    function showLoginSuccess(message) {
+        successBox.classList.remove("hidden");
+        errorBox.classList.add("hidden");
+        document.getElementById("success_message").textContent = message;
+    }
+});
