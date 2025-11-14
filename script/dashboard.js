@@ -2,23 +2,26 @@
 let comptes = JSON.parse(localStorage.getItem("ycd_bank_accounts")) || [];
 
 console.log(comptes)
-console.log(comptes[0].cin)
+let Principalbalance = parseInt(comptes[2].solde_principal)
+let Savingbalance = parseInt(comptes[2].solde_epargne)
 
-let Principalbalance = parseInt(comptes[1].solde_principal)
-let Savingbalance = parseInt(comptes[1].solde_epargne)
-
-//Account RIB : 6666 6666 6666 6666
+//Accounts RIB :
 const prancipalrib = document.getElementById('prancipalrib')
-    prancipalrib.innerHTML = 'Account: ' + comptes[1].rep;
+    prancipalrib.innerHTML = 'Account: ' + comptes[2].rep_principal;
 
-console.log(Principalbalance)
+const epargnerib = document.getElementById('epargnerib')
+    epargnerib.innerHTML = 'Account: ' + comptes[2].rep_epargne;
 
+const fullname = document.getElementById('fullname')
+    fullname.innerHTML = comptes[2].nom + ' ' + comptes[2].prenom
+ 
 // Dyal Principal Account text Show
 
 const showbtn = document.getElementById('showbtn');
 const openimg = document.getElementById('openimg');
 const closeimg = document.getElementById('closeimg');
 const h1 = document.getElementById('passwtext');
+const Mydiv = document.getElementById('History');
     
       h1.innerHTML = '*'.repeat(h1.textContent.length);
       closeimg.style.display = 'flex';
@@ -67,7 +70,6 @@ showbtn1.addEventListener('click', () =>{
 // dyal Recharge 
 
     const popup = document.getElementById("popup");
-    const phonenumber = document.getElementById('phonenumber').value
     const openPopup = document.getElementById("openPopup");
     const closePopup = document.getElementById("closePopup");
     const cancelBtn = document.getElementById("cancelBtn");
@@ -90,22 +92,59 @@ showbtn1.addEventListener('click', () =>{
     });
 
   // Rechargeamount dyal recharge ID amount
+let deletecount = 1 ;
 const recharge = document.getElementById('recharge');
-
 recharge.addEventListener('submit', (e)=>{
   e.preventDefault();
   const amount = parseFloat(document.getElementById('Rechargeamount').value);
+  const phonenumber = document.getElementById('phonenumber').value
+ 
+    if( phonenumber.length === 10){
 
-  if(amount <= Principalbalance){
-    Principalbalance = Principalbalance - amount;
+          if(amount <= Principalbalance){
+            Principalbalance = Principalbalance - amount;
 
-    h1.innerHTML = Principalbalance + 'DH'
+            h1.innerHTML = Principalbalance + ' DH'
 
-    recharge.reset();
-    popup.classList.add("hidden")
-  } else {
-    
-  }
+            recharge.reset();
+            popup.classList.add("hidden")
+            alert(`Payment successful!`)
+            
+            // kataddi new table
+            const newdiv = document.createElement('tr');
+                newdiv.innerHTML = `
+
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
+                <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">-${amount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800">
+                <button class="text-red-700" id="ediibtn${deletecount}">Delete</button>
+                </td>
+                `
+                Mydiv.appendChild(newdiv)
+                const ediibtn = document.getElementById(`ediibtn${deletecount}`)
+                ediibtn.addEventListener('click',(e)=>{
+                  e.target.closest('tr').remove();
+                  console.log(e.target.parentElement)
+                })
+            deletecount++;
+
+            comptes[2].solde_principal = Principalbalance;
+            localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
+          } else {
+            alert('Update Your Balance')
+          }
+    }
+
+      else if(phonenumber.length > 10){
+        alert('Your Number is Invalid Must be 10 Numbers')
+      }
+
+          else {
+            alert('Your Number is Invalid Must be 10 Numbers')
+          }
 })
 
   // dyal invoises
@@ -116,16 +155,12 @@ const closeInvoiceBtn = document.getElementById('closeInvoice');
 const cancelInvoiceBtn = document.getElementById('cancelInvoice');
 const invoiceForm = document.getElementById('invoiceForm');
 const currentBalanceEl = document.getElementById('currentBalance');
-const paymentSuccess = document.getElementById('paymentSuccess');
-const paymentError = document.getElementById('paymentError');
 
 currentBalanceEl.textContent = Principalbalance + 'DH'
 
-// Open popup when Active button clicked
+// Open popup Fash Active button clickd
 activeBtn.addEventListener('click', () => {
   invoicePopup.classList.remove('hidden');
-  paymentSuccess.classList.add('hidden');
-  paymentError.classList.add('hidden');
 });
 
 // Close popup
@@ -154,17 +189,37 @@ invoiceForm.addEventListener('submit', (e) => {
     Principalbalance -= amount;
     currentBalanceEl.textContent = Principalbalance + ' DH';
     h1.innerHTML = Principalbalance + 'DH'
-    paymentSuccess.classList.remove('hidden');
-    paymentError.classList.add('hidden');
+    alert(`Payment successful!`)
     invoiceForm.reset();
+    invoicePopup.classList.add('hidden');
+    comptes[2].solde_principal = Principalbalance;
+    localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
+    // kataddi new table
+            const newdiv = document.createElement('tr');
+                newdiv.innerHTML = `
+
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
+                <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">-${amount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800">
+                <button id="ediibtn${deletecount}">Delete</button>
+                </td>
+                `
+                Mydiv.appendChild(newdiv)
+                const ediibtn = document.getElementById(`ediibtn${deletecount}`)
+                ediibtn.addEventListener('click',(e)=>{
+                  e.target.closest('tr').remove();
+                  console.log(e.target.parentElement)
+                })
+            deletecount++;
   } else {
-    paymentError.classList.remove('hidden');
-    paymentSuccess.classList.add('hidden');
+    alert(`Invalid . Please Update Your Balance`);
+    invoicePopup.classList.add('hidden');
   }
 });
 
-
-//
 
 // Static rates
 const rates = {
@@ -202,21 +257,42 @@ convertBtn.addEventListener('click', () => {
 
 // dyal transfer men Principal account l Saving
 
-const popuptr = document.getElementById("popuptr");
+    const popuptr = document.getElementById("popuptr");
     const openPopuptr = document.getElementById("openPopuptr");
     const closePopuptr = document.getElementById("closePopuptr");
     const cancelBtntr = document.getElementById("cancelBtntr");
 
-    openPopuptr.addEventListener("click", () => {
+    const RIB1 = document.getElementById('RIB1');
+    const RIB2 = document.getElementById('RIB2');
+    const RIB3 = document.getElementById('RIB3');
+    const RIB4 = document.getElementById('RIB4');
+    const RIB1to = document.getElementById('RIB1to');
+    const RIB2to = document.getElementById('RIB2to');
+    const RIB1value = document.getElementById('RIB1value');
+    const RIB2value = document.getElementById('RIB2value');
+    const Transfer = document.getElementById('Transfer');
+    
+    RIB1.innerHTML ='Principal Account ' + comptes[2].rep_principal;
+    RIB2.innerHTML ='Saving Account ' + comptes[2].rep_epargne;
+    RIB3.innerHTML ='Saving Account ' + comptes[2].rep_epargne;
+    RIB4.innerHTML ='Principal Account ' + comptes[2].rep_principal;
+    
+openPopuptr.addEventListener("click", () => {
         
-        popuptr.classList.remove("hidden")
+        popuptr.classList.remove("hidden");
+        RIB1to.innerHTML = RIB1value.value;
+        RIB2to.innerHTML = RIB2value.value;
+        if(RIB1value.value === RIB2value.value){
+          alert("You Can't Transfer to the Same Account");
+          popuptr.classList.add("hidden");
+        }
     });
     cancelBtntr.addEventListener("click", () => {
         
         popuptr.classList.add("hidden")
     });
 
-    // Close fash kn clicki outside
+// Close fash kn clicki outside
     popuptr.addEventListener("click", (e) => {
       
         if (e.target === popup) {
@@ -224,13 +300,116 @@ const popuptr = document.getElementById("popuptr");
         }
     });
 
+Transfer.addEventListener('click', (e) => {
 
+    if ( RIB1value.value === 'Principal Account 3121341234563896165554'){
 
+      const Transferamount = document.getElementById('Transferamount').value.trim();
+      const transamount = parseInt(Transferamount);
 
-const RIB1 = document.getElementById('RIB1')
-const RIB2 = document.getElementById('RIB2')
-const RIB3 = document.getElementById('RIB3')
-const RIB4 = document.getElementById('RIB4')
+            if(transamount > Principalbalance){
+                alert(`Please Update Your Balance. You have : ${Principalbalance}DH`);
+                popuptr.classList.add("hidden")
+            }
+                else{
+                Principalbalance = Principalbalance - transamount;
+                Savingbalance = Savingbalance + transamount;
+                h1.innerHTML = Principalbalance + ' DH';
+                h11.innerHTML = Savingbalance + ' DH';
+                popuptr.classList.add("hidden")
+                alert(`Payment successful!`)
+                // kataddi new table
+                const newdiv = document.createElement('tr');
+                newdiv.innerHTML = `
 
-RIB1.innerHTML = comptes[1].rep;
-RIB4.innerHTML = comptes[1].rep;
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
+                <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">-${transamount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800">
+                <button id="ediibtn${deletecount}">Delete</button>
+                </td>
+                `
+                Mydiv.appendChild(newdiv)
+                const ediibtn = document.getElementById(`ediibtn${deletecount}`)
+                ediibtn.addEventListener('click',(e)=>{
+                  e.target.closest('tr').remove();
+                  console.log(e.target.parentElement)
+                })
+            deletecount++;
+
+                comptes[2].solde_principal = Principalbalance;
+                comptes[2].solde_epargne = Savingbalance;
+                localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
+                }
+    }
+      else{
+      const Transferamount = document.getElementById('Transferamount').value.trim();
+      const transamount = parseInt(Transferamount);
+
+            if(transamount > Savingbalance){
+              alert(`Please Update Your Balance. You have : ${Savingbalance}DH`);
+                popuptr.classList.add("hidden")
+            }
+                else{
+              Principalbalance = Principalbalance + transamount;
+              Savingbalance = Savingbalance - transamount;
+              h1.innerHTML = Principalbalance + ' DH';
+              h11.innerHTML = Savingbalance + ' DH';
+              popuptr.classList.add("hidden")
+              alert(`Payment successful!`)
+              // kataddi new table
+                const newdiv = document.createElement('tr');
+                newdiv.innerHTML = `
+
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
+                <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">-${transamount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800">
+                <button id="ediibtn${deletecount}">Delete</button>
+                </td>
+                `
+                Mydiv.appendChild(newdiv)
+                const ediibtn = document.getElementById(`ediibtn${deletecount}`)
+                ediibtn.addEventListener('click',(e)=>{
+                  e.target.closest('tr').remove();
+                  console.log(e.target.parentElement)
+                })
+            deletecount++;
+
+                comptes[2].solde_principal = Principalbalance;
+                comptes[2].solde_epargne = Savingbalance;
+                localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
+              }
+            }
+});
+
+// 
+
+let transactionHistory = [];
+
+transactionHistory.push({Type: "Top-up",Reference: "Bank Transfer",Amount:"200 DH"})
+transactionHistory.push({Type: "Payments",Reference: "Bank Pizza",Amount:"600 DH"})
+
+/* //Testing
+for (let i = 0 ; i < 2 ;i++){
+  console.log(transactionHistory[i].Type);
+  const newdiv = document.createElement('tr');
+                newdiv.innerHTML = `
+
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">${transactionHistory[i].Type}</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${transactionHistory[i].Amount}</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">+${transactionHistory[i].Amount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
+                `
+                Mydiv.appendChild(newdiv)
+}
+                */
+
+// edit fi Transaction History
+
