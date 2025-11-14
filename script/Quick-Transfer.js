@@ -7,7 +7,7 @@ const Qtransfer = document.getElementById('Qtransfer');
 const addBtn = document.getElementById('addbtn');
 
 // if(addbtn){
-
+ 
 
 //   alert("test");
 // }
@@ -20,7 +20,6 @@ const MAX_USERS = 5;
  comptes = JSON.parse(localStorage.getItem("ycd_bank_accounts")) || [];
 const index_couent_user = localStorage.getItem("ycd_bank_index");
 
-// alert("courant:"+index_couent_user);
 
 
 
@@ -228,9 +227,9 @@ addBtn.addEventListener('click', () => {
  
 // Fermer la popup
 removeBtnTransfer.addEventListener('click', () => {
-      usedPopup.style.display="none";
-    //  usedPopup.classList.add('hidden');
-    
+     usedPopup.style.display="none";
+    usedPopup.classList.add('hidden');
+     
 });
 
 // === Ajouter un nouvel utilisateur ===
