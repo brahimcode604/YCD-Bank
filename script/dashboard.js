@@ -1,4 +1,5 @@
 // local storge
+let history
 let comptes = JSON.parse(localStorage.getItem("ycd_bank_accounts")) || [];
 
 console.log(comptes)
