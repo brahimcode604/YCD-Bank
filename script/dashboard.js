@@ -92,6 +92,7 @@ showbtn1.addEventListener('click', () =>{
     });
 
   // Rechargeamount dyal recharge ID amount
+let deletecount = 1 ;
 const recharge = document.getElementById('recharge');
 recharge.addEventListener('submit', (e)=>{
   e.preventDefault();
@@ -108,19 +109,25 @@ recharge.addEventListener('submit', (e)=>{
             recharge.reset();
             popup.classList.add("hidden")
             alert(`Payment successful!`)
-
+            
             // kataddi new table
             const newdiv = document.createElement('tr');
                 newdiv.innerHTML = `
 
-          <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
-          <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Payments</td>
-          <td class="px-4 py-2 text-sm text-gray-700">Recharge</td>
-          <td class="px-4 py-2 text-sm text-red-600 font-bold">-${amount} DH</td>
-          <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
-          <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
-          `
-          Mydiv.appendChild(newdiv)
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
+                <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">-${amount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800"><button id="ediibtn${deletecount}">Edit</button></td>
+                `
+                Mydiv.appendChild(newdiv)
+                const ediibtn = document.getElementById(`ediibtn${deletecount}`)
+                ediibtn.addEventListener('click',(e)=>{
+                  e.target.closest('tr').remove();
+                  console.log(e.target.parentElement)
+                })
+            deletecount++;
 
             comptes[2].solde_principal = Principalbalance;
             localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
@@ -187,16 +194,22 @@ invoiceForm.addEventListener('submit', (e) => {
     localStorage.setItem("ycd_bank_accounts", JSON.stringify(comptes));
     // kataddi new table
             const newdiv = document.createElement('tr');
-            newdiv.innerHTML = `
+                newdiv.innerHTML = `
 
-            <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
-            <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Payments</td>
-            <td class="px-4 py-2 text-sm text-gray-700">invoice</td>
-            <td class="px-4 py-2 text-sm text-red-600 font-bold">-${amount} DH</td>
-            <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
-            <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
-            `
-            Mydiv.appendChild(newdiv)
+                <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
+                <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
+                <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">-${amount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
+                <td class="px-4 py-2 text-sm text-blue-800"><button id="ediibtn${deletecount}">Edit</button></td>
+                `
+                Mydiv.appendChild(newdiv)
+                const ediibtn = document.getElementById(`ediibtn${deletecount}`)
+                ediibtn.addEventListener('click',(e)=>{
+                  e.target.closest('tr').remove();
+                  console.log(e.target.parentElement)
+                })
+            deletecount++;
   } else {
     alert(`Invalid . Please Update Your Balance`);
     invoicePopup.classList.add('hidden');
@@ -307,12 +320,18 @@ Transfer.addEventListener('click', (e) => {
 
                 <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
                 <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
-                <td class="px-4 py-2 text-sm text-gray-700">Transfer (Principal to Saving)</td>
-                <td class="px-4 py-2 text-sm text-red-600 font-bold">-${transamount} DH</td>
+                <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">-${transamount} DH</td>
                 <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
-                <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
+                <td class="px-4 py-2 text-sm text-blue-800"><button id="ediibtn${deletecount}">Edit</button></td>
                 `
                 Mydiv.appendChild(newdiv)
+                const ediibtn = document.getElementById(`ediibtn${deletecount}`)
+                ediibtn.addEventListener('click',(e)=>{
+                  e.target.closest('tr').remove();
+                  console.log(e.target.parentElement)
+                })
+            deletecount++;
 
                 comptes[2].solde_principal = Principalbalance;
                 comptes[2].solde_epargne = Savingbalance;
@@ -341,11 +360,17 @@ Transfer.addEventListener('click', (e) => {
                 <td class="px-4 py-2 text-sm text-gray-600">2025-11-12 10:35</td>
                 <td class="px-4 py-2 text-sm text-blue-500 font-semibold">Transfers</td>
                 <td class="px-4 py-2 text-sm text-gray-700">Transfer (Saving to Principal)</td>
-                <td class="px-4 py-2 text-sm text-green-600 font-bold">+${transamount} DH</td>
+                <td class="px-4 py-2 text-sm text-green-600 font-bold">-${transamount} DH</td>
                 <td class="px-4 py-2 text-sm text-gray-700">${Principalbalance} DH</td>
-                <td class="px-4 py-2 text-sm text-blue-800"><button>Edit</button></td>
+                <td class="px-4 py-2 text-sm text-blue-800"><button id="ediibtn${deletecount}">Edit</button></td>
                 `
                 Mydiv.appendChild(newdiv)
+                const ediibtn = document.getElementById(`ediibtn${deletecount}`)
+                ediibtn.addEventListener('click',(e)=>{
+                  e.target.closest('tr').remove();
+                  console.log(e.target.parentElement)
+                })
+            deletecount++;
 
                 comptes[2].solde_principal = Principalbalance;
                 comptes[2].solde_epargne = Savingbalance;
